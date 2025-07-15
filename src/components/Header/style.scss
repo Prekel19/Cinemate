@@ -1,5 +1,48 @@
+@use "@/styles/constants" as c;
+
 .header {
+  background: c.$bg-dark;
+  position: fixed;
+  width: 100%;
   display: flex;
   justify-content: start;
   align-items: center;
+  gap: 2.5rem;
+  padding: 1rem 7.5%;
+  border-bottom: 1px solid c.$border-dark-gray;
+
+  h1 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    line-height: 1.75rem;
+    color: c.$font-red;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    span {
+      font-size: 1.75rem;
+    }
+  }
+
+  .nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 1.3rem;
+    color: c.$font-white;
+
+    a {
+      font-size: 1rem;
+      font-weight: 300;
+      line-height: 1.1rem;
+      transition: all 0.25s ease-in-out;
+
+      &.active {
+        font-weight: 400;
+        color: c.$font-red;
+      }
+
+      &:hover {
+        color: c.$font-red;
+      }
+    }
+  }
 }
