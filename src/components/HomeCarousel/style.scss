@@ -1,6 +1,58 @@
 @use "swiper/css";
+@use "swiper/css/navigation";
+@use "swiper/css/pagination";
+@use "@/styles/constants" as c;
 
 .home-carousel {
   max-width: 100%;
   width: 100%;
+
+  .swiper-slide img {
+    width: 100%;
+    height: 600px;
+    object-fit: cover;
+  }
+
+  .swiper-button-prev,
+  .swiper-button-next {
+    background: c.$bg-black-50;
+    width: unset;
+    height: unset;
+    padding: 0.65rem;
+    border-radius: 100%;
+    transition: all 0.25s ease-in-out;
+
+    &:hover {
+      background: c.$bg-black-70;
+    }
+
+    &::after {
+      display: flex;
+      font-size: unset;
+    }
+  }
+
+  .swiper-button-prev::after {
+    content: url("@/assets/icons/chevron-left.svg");
+  }
+
+  .swiper-button-next::after {
+    content: url("@/assets/icons/chevron-right.svg");
+  }
+
+  .swiper-pagination-bullet {
+    background: c.$bg-dark-gray-50;
+    filter: contrast(4);
+    height: 12px;
+    width: 12px;
+    opacity: 1;
+    transition: all 0.25s ease-in-out;
+
+    &-active {
+      background: c.$bg-red;
+      filter: contrast(1);
+      width: 32px;
+      border-radius: 100px;
+    }
+  }
 }
