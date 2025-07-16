@@ -2,7 +2,8 @@
 
 .header {
   background: c.$bg-dark;
-  position: fixed;
+  position: sticky;
+  top: 0;
   width: 100%;
   display: flex;
   justify-content: start;
