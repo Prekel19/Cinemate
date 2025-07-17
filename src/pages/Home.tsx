@@ -37,7 +37,7 @@ export const Home = () => {
   console.log(trending.results);
   return (
     <>
-      <HomeCarousel trendings={trending.results.slice(0, 5)} />
+      <HomeCarousel trendings={trending.results} />
     </>
   );
 };

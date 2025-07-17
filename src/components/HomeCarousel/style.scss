@@ -7,10 +7,20 @@
   max-width: 100%;
   width: 100%;
 
-  .swiper-slide img {
-    width: 100%;
-    height: 600px;
-    object-fit: cover;
+  .swiper-slide {
+    display: grid;
+    grid-template-areas: "slide";
+
+    * {
+      grid-area: slide;
+    }
+
+    img {
+      width: 100%;
+      height: 600px;
+      object-fit: cover;
+      z-index: 1;
+    }
   }
 
   .swiper-button-prev,
@@ -42,7 +52,6 @@
 
   .swiper-pagination-bullet {
     background: c.$bg-dark-gray-50;
-    filter: contrast(4);
     height: 12px;
     width: 12px;
     opacity: 1;
@@ -50,9 +59,75 @@
 
     &-active {
       background: c.$bg-red;
-      filter: contrast(1);
       width: 32px;
       border-radius: 100px;
+    }
+  }
+
+  .slide-gradient {
+    background: linear-gradient(to right, #000, rgb(0 0 0 / 0.6), transparent);
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+  }
+
+  .slide-content {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    align-self: center;
+    gap: 1rem;
+    padding-left: 8%;
+    z-index: 3;
+
+    .trending {
+      &-heading {
+        font-size: 1rem;
+        font-weight: 400;
+        color: c.$font-gray;
+        text-transform: uppercase;
+        letter-spacing: 0.7px;
+        padding-left: 0.5rem;
+        border-left: 4px solid c.$bg-red;
+      }
+
+      &-title {
+        font-size: 3.3rem;
+        font-weight: 700;
+        line-height: 110%;
+      }
+
+      &-description {
+        max-width: 30rem;
+        font-size: 0.9rem;
+        font-weight: 400;
+        color: c.$font-gray;
+        line-height: normal;
+      }
+
+      &-info {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: c.$font-gray;
+      }
+
+      &-rating,
+      &-type {
+        font-size: 0.85rem;
+      }
+
+      &-type {
+        text-transform: capitalize;
+      }
+
+      &-btn {
+        background: c.$bg-red;
+
+        &:hover {
+          background: c.$bg-hover-red;
+        }
+      }
     }
   }
 }
