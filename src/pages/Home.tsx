@@ -1,17 +1,7 @@
 import { HomeCarousel } from "@/components/HomeCarousel/HomeCarousel";
 import type { Trendings } from "@/models/types";
+import { getTmdbApi } from "@/utility/getTmdbApi";
 import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
-
-const url = "https://api.themoviedb.org/3/trending/movie/day?language=en-US";
-
-const options = {
-  method: "GET",
-  headers: {
-    accept: "application/json",
-    Authorization: `Bearer ${import.meta.env.VITE_TMDB_API_KEY}`,
-  },
-};
 
 export const Home = () => {
   const {
@@ -20,10 +10,10 @@ export const Home = () => {
     isError,
   } = useQuery({
     queryKey: ["trending"],
-    queryFn: async () => {
-      const res = await axios.get(url, options);
-      return res.data as Trendings;
-    },
+    queryFn: () =>
+      getTmdbApi<Trendings>("trending/movie/day", {
+        language: "en-US",
+      }),
   });
 
   if (isPending) {
