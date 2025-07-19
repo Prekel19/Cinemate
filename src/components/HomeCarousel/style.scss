@@ -15,10 +15,9 @@
       grid-area: slide;
     }
 
-    img {
-      width: 100%;
-      height: 600px;
-      object-fit: cover;
+    .AsyncImage-root {
+      width: 100% !important;
+      height: 650px !important;
       z-index: 1;
     }
   }

@@ -1,6 +1,7 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
 import type { TrendingsResults } from "@/models/types";
+import { AsyncImage } from "loadable-image";
 import { Button } from "../ui/button";
 import { Link } from "react-router";
 import { Info } from "lucide-react";
@@ -19,21 +20,24 @@ export const HomeCarousel = ({ trendings }: HomeCarouselProps) => {
   const filteredTrendings = trendings.filter((el) => el.vote_average > 0);
   const sortedTrendings = filteredTrendings
     .sort((a, b) => b.popularity - a.popularity)
-    .slice(0, 5);
+    .slice(0, 4);
 
   return (
     <div className="home-carousel">
       <Swiper
         modules={[Navigation, Pagination]}
         pagination={{ clickable: true }}
+        speed={650}
         slidesPerView={1}
         navigation
         loop
       >
         {sortedTrendings.map((trending) => (
           <SwiperSlide key={trending.id}>
-            <img
+            <AsyncImage
               src={`https://image.tmdb.org/t/p/original/${trending.backdrop_path}`}
+              style={{ width: 1920, height: 1080 }}
+              loader={<div style={{ background: "#000" }} />}
               alt={trending.title}
             />
             <div className="slide-gradient"></div>
