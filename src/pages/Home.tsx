@@ -24,7 +24,6 @@ export const Home = () => {
     return <div>Error</div>;
   }
 
-  console.log(trending.results);
   return (
     <>
       <HomeCarousel trendings={trending.results} />
