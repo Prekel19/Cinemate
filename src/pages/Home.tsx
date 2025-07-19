@@ -1,4 +1,5 @@
 import { HomeCarousel } from "@/components/HomeCarousel/HomeCarousel";
+import { SearchBar } from "@/components/SearchBar/SearchBar";
 import type { Trendings } from "@/models/types";
 import { getTmdbApi } from "@/utility/getTmdbApi";
 import { useQuery } from "@tanstack/react-query";
@@ -27,6 +28,7 @@ export const Home = () => {
   return (
     <>
       <HomeCarousel trendings={trending.results} />
+      <SearchBar />
     </>
   );
 };

@@ -4,7 +4,7 @@ const url: string = "https://api.themoviedb.org/3/";
 
 export async function getTmdbApi<T>(
   endpoint: string,
-  params: Record<string, string | number>
+  params: Record<string, string | number | boolean>
 ): Promise<T> {
   const formatedUrl: string = url + endpoint;
 
