@@ -19,6 +19,7 @@ export const HomeCarousel = ({ trendings }: HomeCarouselProps) => {
     <div className="home-carousel">
       <Swiper
         modules={[Navigation, Pagination, Autoplay]}
+        touchStartPreventDefault={false}
         pagination={{ clickable: true }}
         speed={800}
         slidesPerView={1}
