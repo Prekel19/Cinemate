@@ -1,14 +1,21 @@
+import { useEffect, useRef } from "react";
 import { HomeCarousel } from "@/components/HomeCarousel/HomeCarousel";
 import { SearchBar } from "@/components/SearchBar/SearchBar";
+import { MediaTile } from "@/components/MediaTile/MediaTile";
 import type { Trendings } from "@/models/types";
 import { getTmdbApi } from "@/utility/getTmdbApi";
-import { useQuery } from "@tanstack/react-query";
+import { getTmdbPage } from "@/utility/getTmdbPage";
+import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
+import { ClipLoader } from "react-spinners";
+import { Fade } from "react-awesome-reveal";
 
 export const Home = () => {
+  const endOfPageRef = useRef<HTMLDivElement>(null);
+
   const {
     data: trending,
-    isPending,
-    isError,
+    isPending: isTrendingPending,
+    isError: isTrendingError,
   } = useQuery({
     queryKey: ["trending"],
     queryFn: () =>
@@ -17,18 +24,73 @@ export const Home = () => {
       }),
   });
 
-  if (isPending) {
-    return <div>Loading...</div>;
-  }
+  const { data, isPending, isError, fetchNextPage, isFetchingNextPage } =
+    useInfiniteQuery({
+      queryKey: ["home-discover"],
+      queryFn: ({ pageParam = 1 }) =>
+        getTmdbPage<Trendings>("trending/all/week", pageParam, {
+          language: "en-US",
+        }),
+      initialPageParam: 1,
+      getNextPageParam: (lastPage) => lastPage.nextPage,
+    });
 
-  if (isError) {
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          fetchNextPage();
+        }
+      });
+    });
+
+    if (endOfPageRef.current) {
+      observer.observe(endOfPageRef.current);
+    }
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [fetchNextPage]);
+
+  if (isTrendingError || isError) {
     return <div>Error</div>;
   }
 
   return (
     <>
-      <HomeCarousel trendings={trending.results} />
-      <SearchBar />
+      {isTrendingPending ? (
+        <div className="loading-spinner">
+          <ClipLoader color="#9ca3af80" size={60} />
+        </div>
+      ) : (
+        <Fade>
+          <HomeCarousel trendings={trending.results} />
+          <SearchBar />
+          <div className="home-discover">
+            <Fade triggerOnce>
+              {data?.pages &&
+                data.pages.map((page) => {
+                  return page.data.results.map((item) => (
+                    <MediaTile
+                      key={item.id}
+                      imgUrl={`https://image.tmdb.org/t/p/w342${item.poster_path}`}
+                      title={item.title || item.name || ""}
+                      rating={item.vote_average}
+                      releaseDate={item.release_date || item.first_air_date || ""}
+                    />
+                  ));
+                })}
+            </Fade>
+          </div>
+          <div className="page-loader">
+            {(isFetchingNextPage || isPending) && (
+              <ClipLoader color="#9ca3af80" size={50} />
+            )}
+          </div>
+        </Fade>
+      )}
+      <div ref={endOfPageRef}></div>
     </>
   );
 };

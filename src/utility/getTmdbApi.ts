@@ -4,7 +4,7 @@ const url: string = "https://api.themoviedb.org/3/";
 
 export async function getTmdbApi<T>(
   endpoint: string,
-  params: Record<string, string | number | boolean>
+  params?: Record<string, string | number | boolean>
 ): Promise<T> {
   const formatedUrl: string = url + endpoint;
 
@@ -13,7 +13,7 @@ export async function getTmdbApi<T>(
       authorization: `Bearer ${import.meta.env.VITE_TMDB_API_KEY}`,
     },
     params: {
-      ...params,
+      ...(params ?? {}),
     },
   });
 

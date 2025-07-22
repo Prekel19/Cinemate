@@ -33,7 +33,38 @@ body {
   background-size: cover;
 }
 
+// APP CONTAINER
 .app {
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
   position: relative;
+}
+
+// LOADING SPINNER
+.loading-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
+
+// PAGE LOADER
+.page-loader {
+  display: flex;
+  justify-content: center;
+  padding: 4rem 0 2rem;
+}
+// HOME
+.home-discover {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1.5rem 1.5% 0;
+  border-top: 1px solid c.$border-dark-gray;
+  margin: 0 auto;
+
+  * {
+    flex: 1 1 calc(20% - 1rem);
+  }
 }
