@@ -2,6 +2,7 @@
 @use "swiper/css/navigation";
 @use "swiper/css/pagination";
 @use "@/styles/constants" as c;
+@use "@/styles/mixin" as m;
 
 .home-carousel {
   max-width: 100%;
@@ -91,17 +92,12 @@
       }
 
       &-title {
-        font-size: 3.3rem;
-        font-weight: 700;
-        line-height: 110%;
+        @include m.title(3.3rem, 110%);
       }
 
       &-description {
         max-width: 30rem;
-        font-size: 0.9rem;
-        font-weight: 400;
-        color: c.$font-gray;
-        line-height: normal;
+        @include m.text();
       }
 
       &-info {
@@ -113,7 +109,7 @@
 
       &-rating,
       &-type {
-        font-size: 0.85rem;
+        @include m.info();
       }
 
       &-type {

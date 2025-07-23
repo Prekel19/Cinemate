@@ -1,5 +1,9 @@
 import { LoadingSpinner } from "@/components/LoadingSpinner/LoadingSpinner";
-import type { Movie } from "@/models/types";
+import { MediaBanner } from "@/components/MediaBanner/MediaBanner";
+import { MediaDetailsButtons } from "@/components/MediaDetailsButtons/MediaDetailsButtons";
+import { MediaDetailsOverview } from "@/components/MediaDetailsOverview/MediaDetailsOverview";
+import { MediaDetailsTitle } from "@/components/MediaDetailsTitle/MediaDetailsTitle";
+import type { Series } from "@/models/types";
 import { getTmdbApi } from "@/utility/getTmdbApi";
 import { useQuery } from "@tanstack/react-query";
 import { Calendar, Clock, Star } from "lucide-react";
@@ -12,7 +16,7 @@ export const SeriesDetails = () => {
   const { data, isPending, isError, error } = useQuery({
     queryKey: ["media-details", { id }],
     queryFn: () =>
-      getTmdbApi<Movie>(`/movie/${id}`, {
+      getTmdbApi<Series>(`/tv/${id}`, {
         language: "en-US",
       }),
   });
@@ -28,31 +32,33 @@ export const SeriesDetails = () => {
       {isPending ? (
         <LoadingSpinner />
       ) : (
-        <Fade triggerOnce>
-          <div className="media-details-banner">
-            <img
-              src={`https://image.tmdb.org/t/p/original${data.backdrop_path}`}
-              alt={data.title}
-            />
-          </div>
-          <div className="media-details-header">
-            <h2>{data.title}</h2>
-            <div className="media-details-header-info">
-              <p>
-                <Star size={24} color="#eab308" />
-                {Math.round(data.vote_average * 10) / 10}/10
-              </p>
-              <p>
-                <Clock size={24} color="#9ca3af" />
-                {data.runtime} min
-              </p>
-              <p>
-                <Calendar size={24} color="#9ca3af" />
-                {new Date(data.release_date).getFullYear()}
-              </p>
+        <div className="media-details">
+          <Fade triggerOnce>
+            <MediaBanner src={data.backdrop_path} alt={data.name} />
+            <div className="media-details-content-wrapper">
+              <div className="media-details-header">
+                <MediaDetailsTitle title={data.name} tagline={data.tagline} />
+                <div className="media-details-header-info">
+                  <p>
+                    <Star size={20} color="#eab308" />
+                    {Math.round(data.vote_average * 10) / 10}/10
+                  </p>
+                  <p>
+                    <Calendar size={20} color="#9ca3af" />
+                    {new Date(data.first_air_date).getFullYear()}
+                  </p>
+                </div>
+              </div>
+              <MediaDetailsButtons />
+              <div className="media-details-content">
+                <div className="media-details-content-left">
+                  <MediaDetailsOverview overview={data.overview} />
+                </div>
+                <div className="media-details-content-right"></div>
+              </div>
             </div>
-          </div>
-        </Fade>
+          </Fade>
+        </div>
       )}
     </>
   );

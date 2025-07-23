@@ -1,0 +1,11 @@
+@use "@/styles/mixin" as m;
+@use "@/styles/constants" as c;
+
+.media-details-title {
+  @include m.title(c.$font-white, 2.5rem, 80%);
+}
+
+.media-details-tagline {
+  font-style: italic;
+  color: c.$font-gray;
+}

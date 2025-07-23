@@ -24,7 +24,7 @@ export const Home = () => {
       }),
   });
 
-  const { data, isPending, isError, fetchNextPage, isFetchingNextPage } =
+  const { data, isPending, isError, fetchNextPage, isFetchingNextPage, hasNextPage } =
     useInfiniteQuery({
       queryKey: ["home-discover"],
       queryFn: ({ pageParam = 1 }) =>
@@ -44,14 +44,14 @@ export const Home = () => {
       });
     });
 
-    if (endOfPageRef.current) {
+    if (endOfPageRef.current && hasNextPage) {
       observer.observe(endOfPageRef.current);
     }
 
     return () => {
       observer.disconnect();
     };
-  }, [fetchNextPage]);
+  }, [fetchNextPage, hasNextPage]);
 
   if (isTrendingError || isError) {
     return <div>Error</div>;
@@ -87,11 +87,11 @@ export const Home = () => {
                 })}
             </Fade>
           </div>
-          <div className="page-loader">
-            {(isFetchingNextPage || isPending) && (
+          {(isFetchingNextPage || isPending) && (
+            <div className="page-loader">
               <ClipLoader color="#9ca3af80" size={50} />
-            )}
-          </div>
+            </div>
+          )}
         </Fade>
       )}
       <div ref={endOfPageRef}></div>

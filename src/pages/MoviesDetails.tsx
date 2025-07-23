@@ -1,6 +1,8 @@
 import { LoadingSpinner } from "@/components/LoadingSpinner/LoadingSpinner";
 import { MediaBanner } from "@/components/MediaBanner/MediaBanner";
 import { MediaDetailsButtons } from "@/components/MediaDetailsButtons/MediaDetailsButtons";
+import { MediaDetailsOverview } from "@/components/MediaDetailsOverview/MediaDetailsOverview";
+import { MediaDetailsTitle } from "@/components/MediaDetailsTitle/MediaDetailsTitle";
 import type { Movie } from "@/models/types";
 import { getTmdbApi } from "@/utility/getTmdbApi";
 import { useQuery } from "@tanstack/react-query";
@@ -35,29 +37,28 @@ export const MovieDetails = () => {
             <MediaBanner src={data.backdrop_path} alt={data.title} />
             <div className="media-details-content-wrapper">
               <div className="media-details-header">
-                <h2 className="media-details-title">{data.title}</h2>
-                {data.tagline && (
-                  <p className="media-details-tagline">"{data.tagline}"</p>
-                )}
+                <MediaDetailsTitle title={data.title} tagline={data.tagline} />
                 <div className="media-details-header-info">
                   <p>
-                    <Star size={24} color="#eab308" />
+                    <Star size={20} color="#eab308" />
                     {Math.round(data.vote_average * 10) / 10}/10
                   </p>
                   <p>
-                    <Clock size={24} color="#9ca3af" />
+                    <Clock size={20} color="#9ca3af" />
                     {data.runtime} min
                   </p>
                   <p>
-                    <Calendar size={24} color="#9ca3af" />
+                    <Calendar size={20} color="#9ca3af" />
                     {new Date(data.release_date).getFullYear()}
                   </p>
                 </div>
               </div>
               <MediaDetailsButtons />
-              <div className="media-details-overview">
-                <h3>Overview</h3>
-                <p>{data.overview}</p>
+              <div className="media-details-content">
+                <div className="media-details-content-left">
+                  <MediaDetailsOverview overview={data.overview} />
+                </div>
+                <div className="media-details-content-right"></div>
               </div>
             </div>
           </Fade>

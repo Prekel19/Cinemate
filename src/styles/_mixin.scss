@@ -1,0 +1,25 @@
+@use "./constants" as c;
+
+@mixin title($color: #fff, $font-size: 1.7rem, $line-height: 100%) {
+  font-size: $font-size;
+  font-weight: 700;
+  line-height: $line-height;
+  color: $color;
+}
+
+@mixin text($font-size: 0.9rem, $color: c.$font-gray) {
+  font-size: $font-size;
+  font-weight: 400;
+  line-height: normal;
+  color: $color;
+}
+
+@mixin info() {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.85rem;
+  font-weight: 400;
+  line-height: 100%;
+  color: c.$font-gray;
+}

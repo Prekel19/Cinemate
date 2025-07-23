@@ -1,4 +1,5 @@
 @use "@/styles/constants" as c;
+@use "@/styles/mixin" as m;
 
 .media-tile {
   border: 1px solid c.$border-dark-gray;
@@ -36,12 +37,7 @@
   }
 
   &-info {
-    display: flex;
-    align-items: center;
-    gap: 0.45rem;
-    font-size: 0.85rem;
-    line-height: 100%;
-    color: c.$font-gray;
+    @include m.info();
   }
 
   &-rating {

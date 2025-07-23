@@ -22,7 +22,7 @@ function App() {
           element: <MovieDetails />,
         },
         {
-          path: "series/:id",
+          path: "/series/:id",
           element: <SeriesDetails />,
         },
       ],
