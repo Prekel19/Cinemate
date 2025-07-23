@@ -4,18 +4,28 @@ import { AspectRatio } from "@radix-ui/react-aspect-ratio";
 import { Star } from "lucide-react";
 
 type MediaTileProps = {
+  id: number;
   imgUrl: string;
   title: string;
   rating: number;
+  mediaType: string;
   releaseDate: string;
 };
 
-export const MediaTile = ({ imgUrl, title, rating, releaseDate }: MediaTileProps) => {
+export const MediaTile = ({
+  id,
+  imgUrl,
+  title,
+  rating,
+  mediaType,
+  releaseDate,
+}: MediaTileProps) => {
   const yearOfRelease = new Date(releaseDate).getFullYear();
+  const media = mediaType === "movie" ? "movies" : "series";
 
   return (
     <div className="media-tile">
-      <Link to="/">
+      <Link to={`/${media}/${id}`}>
         <AspectRatio className="media-tile-poster" ratio={2 / 3}>
           <img src={imgUrl ?? ""} alt={`${title} poster`} />
         </AspectRatio>

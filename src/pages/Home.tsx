@@ -57,6 +57,8 @@ export const Home = () => {
     return <div>Error</div>;
   }
 
+  console.log(data?.pages[0]?.data.results);
+
   return (
     <>
       {isTrendingPending ? (
@@ -74,8 +76,10 @@ export const Home = () => {
                   return page.data.results.map((item) => (
                     <MediaTile
                       key={item.id}
+                      id={item.id}
                       imgUrl={`https://image.tmdb.org/t/p/w342${item.poster_path}`}
                       title={item.title || item.name || ""}
+                      mediaType={item.media_type}
                       rating={item.vote_average}
                       releaseDate={item.release_date || item.first_air_date || ""}
                     />

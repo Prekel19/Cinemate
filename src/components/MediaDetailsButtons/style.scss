@@ -1,0 +1,23 @@
+@use "@/styles/constants" as c;
+
+.media-details-buttons {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.media-details-button {
+  background: c.$bg-dark-gray;
+  line-height: 110%;
+  color: c.$font-white;
+  padding: 0 1rem;
+
+  &.watchlist {
+    background: c.$bg-red;
+  }
+}
