@@ -1,0 +1,78 @@
+@use "@/styles/constants" as c;
+@use "@/styles/mixin" as m;
+
+// BANNER
+.media-details-banner {
+  width: 100%;
+  position: relative;
+
+  img {
+    width: 100%;
+    height: 550px;
+    object-fit: cover;
+    z-index: 1;
+  }
+
+  &-gradient {
+    background: linear-gradient(to top, #000, rgb(0 0 0 / 0.6), transparent);
+    position: absolute;
+    inset: 0;
+  }
+}
+
+// TITLE
+.media-details-title {
+  @include m.title(c.$font-white, 2.5rem, 80%);
+}
+
+// TAGLINE
+.media-details-tagline {
+  font-style: italic;
+  color: c.$font-gray;
+}
+
+// BUTTONS
+.media-details-buttons {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.media-details-button {
+  background: c.$bg-dark-gray;
+  color: c.$font-white;
+  padding: 0 1rem;
+  cursor: pointer;
+
+  &:hover {
+    background: c.$bg-gray;
+  }
+
+  &.watchlist {
+    background: c.$bg-red;
+
+    &:hover {
+      background: c.$bg-hover-red;
+    }
+  }
+}
+
+// OVERVIEW
+.media-details-overview {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+
+  &-title {
+    @include m.title();
+  }
+
+  &-desc {
+    @include m.text();
+  }
+}

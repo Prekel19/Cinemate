@@ -1,8 +1,8 @@
 import { LoadingSpinner } from "@/components/LoadingSpinner/LoadingSpinner";
-import { MediaBanner } from "@/components/MediaBanner/MediaBanner";
-import { MediaDetailsButtons } from "@/components/MediaDetailsButtons/MediaDetailsButtons";
-import { MediaDetailsOverview } from "@/components/MediaDetailsOverview/MediaDetailsOverview";
-import { MediaDetailsTitle } from "@/components/MediaDetailsTitle/MediaDetailsTitle";
+import { MediaBanner } from "@/components/MediaDetails/MediaBanner";
+import { MediaDetailsButtons } from "@/components/MediaDetails/MediaDetailsButtons";
+import { MediaDetailsOverview } from "@/components/MediaDetails/MediaDetailsOverview";
+import { MediaDetailsTitle } from "@/components/MediaDetails/MediaDetailsTitle";
 import { Container } from "@/components/ui/Container/Container";
 import type { Movie } from "@/models/types";
 import { getFormatedSum } from "@/utility/getFormatedSum";
