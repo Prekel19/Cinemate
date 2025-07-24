@@ -20,7 +20,7 @@ export const SlideContent = ({ trending }: SlideContentProps) => {
       <p className="trending-description">{trending.overview.split(".")[0] + "."}</p>
       <TrendingInfo rating={trending.vote_average} mediaType={trending.media_type} />
       <Button className="trending-btn" asChild>
-        <Link to="/">
+        <Link to={`/movies/${trending.id}`}>
           <Info />
           More Info
         </Link>
