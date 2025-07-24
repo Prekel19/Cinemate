@@ -1,0 +1,11 @@
+@use "@/styles/constants" as c;
+
+.container {
+  background: c.$bg-dark-blue;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.33rem;
+  border-radius: 0.5rem;
+}

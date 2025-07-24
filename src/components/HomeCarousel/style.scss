@@ -92,7 +92,7 @@
       }
 
       &-title {
-        @include m.title(3.3rem, 110%);
+        @include m.title(c.$font-white, 3.3rem, 110%);
       }
 
       &-description {

@@ -3,7 +3,9 @@ import { MediaBanner } from "@/components/MediaBanner/MediaBanner";
 import { MediaDetailsButtons } from "@/components/MediaDetailsButtons/MediaDetailsButtons";
 import { MediaDetailsOverview } from "@/components/MediaDetailsOverview/MediaDetailsOverview";
 import { MediaDetailsTitle } from "@/components/MediaDetailsTitle/MediaDetailsTitle";
+import { Container } from "@/components/ui/Container/Container";
 import type { Movie } from "@/models/types";
+import { getFormatedSum } from "@/utility/getFormatedSum";
 import { getTmdbApi } from "@/utility/getTmdbApi";
 import { useQuery } from "@tanstack/react-query";
 import { Calendar, Clock, Star } from "lucide-react";
@@ -58,7 +60,30 @@ export const MovieDetails = () => {
                 <div className="media-details-content-left">
                   <MediaDetailsOverview overview={data.overview} />
                 </div>
-                <div className="media-details-content-right"></div>
+                <div className="media-details-content-right">
+                  <Container className="media-details-info">
+                    <h3 className="media-details-info-title">Details</h3>
+                    <div className="media-details-info-section">
+                      <span>Original title</span>
+                      <p>{data.original_title}</p>
+                    </div>
+                    <div className="media-details-info-section">
+                      <span>Genres</span>
+                      <p>{data.genres.map((item) => item.name).join(", ")}</p>
+                    </div>
+                  </Container>
+                  <Container className="media-details-info">
+                    <h3 className="media-details-info-title">Box Office</h3>
+                    <div className="media-details-info-section">
+                      <span>Budget</span>
+                      <p>{data.budget ? getFormatedSum(data.budget) : "-"}</p>
+                    </div>
+                    <div className="media-details-info-section">
+                      <span>Revenue</span>
+                      <p>{data.revenue ? getFormatedSum(data.revenue) : "-"}</p>
+                    </div>
+                  </Container>
+                </div>
               </div>
             </div>
           </Fade>

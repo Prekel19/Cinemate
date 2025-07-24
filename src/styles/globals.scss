@@ -60,7 +60,7 @@ body {
   border-top: 1px solid c.$border-dark-gray;
   margin: 0 auto;
 
-  * {
+  > * {
     flex: 1 1 calc(20% - 1rem);
   }
 }
@@ -70,6 +70,7 @@ body {
   background: #000;
   display: flex;
   flex-direction: column;
+  padding-bottom: 2rem;
 
   &-content-wrapper {
     max-width: 85%;
@@ -84,15 +85,50 @@ body {
     flex-direction: column;
     align-items: start;
     gap: 0.6rem;
-    margin-top: -6rem;
+    margin-top: -8rem;
 
     &-info {
       display: flex;
       align-items: center;
       gap: 0.9rem;
 
-      * {
+      > * {
         @include m.info();
+      }
+    }
+  }
+
+  &-content {
+    display: grid;
+    grid-template-columns: 7fr 3fr;
+    gap: 1.8rem;
+
+    > * {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    &-left {
+      gap: 1.75rem;
+    }
+  }
+
+  &-info {
+    align-items: start;
+
+    &-title {
+      @include m.title(c.$font-white, 1.2rem);
+    }
+
+    &-section {
+      span {
+        font-size: 0.9rem;
+        color: c.$font-dark-gray;
+      }
+
+      p {
+        font-size: 0.9rem;
       }
     }
   }
