@@ -43,7 +43,9 @@ const NumberOfSeasons = ({ seasons }: { seasons: number }) => {
   return (
     <div>
       <Tv size={20} color="#9ca3af" />
-      <p>{seasons} Seasons</p>
+      <p>
+        {seasons} {seasons > 1 ? "Seasons" : "Season"}
+      </p>
     </div>
   );
 };

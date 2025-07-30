@@ -66,7 +66,7 @@ export const Home = () => {
           <ClipLoader color="#9ca3af80" size={60} />
         </div>
       ) : (
-        <Fade>
+        <Fade className="home-fade">
           <HomeCarousel trendings={trending.results} />
           <SearchBar />
           <div className="home-discover">

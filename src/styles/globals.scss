@@ -47,7 +47,7 @@ body {
   padding: 4rem 0 2rem;
 }
 // HOME
-.app > *:nth-child(3) {
+.home-fade:has(.searchbar) {
   position: relative;
   z-index: 999;
 }

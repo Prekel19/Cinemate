@@ -1,0 +1,28 @@
+@use "@/styles/constants" as c;
+
+.backToTop {
+  background: c.$bg-red;
+  height: unset;
+  padding: 0.6rem;
+  visibility: hidden;
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  cursor: pointer;
+  opacity: 0;
+  transition: all 0.35s ease-in-out;
+
+  &.active {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  &:hover {
+    background: c.$bg-hover-red;
+  }
+
+  svg {
+    height: unset;
+    width: unset;
+  }
+}
