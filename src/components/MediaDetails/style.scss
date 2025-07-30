@@ -31,6 +31,18 @@
   color: c.$font-gray;
 }
 
+// HEADER INFO
+
+.media-details-header-info {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+
+  > * {
+    @include m.info();
+  }
+}
+
 // BUTTONS
 .media-details-buttons {
   display: flex;

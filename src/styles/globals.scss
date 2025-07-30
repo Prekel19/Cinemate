@@ -86,16 +86,6 @@ body {
     align-items: start;
     gap: 0.6rem;
     margin-top: -8rem;
-
-    &-info {
-      display: flex;
-      align-items: center;
-      gap: 0.9rem;
-
-      > * {
-        @include m.info();
-      }
-    }
   }
 
   &-content {

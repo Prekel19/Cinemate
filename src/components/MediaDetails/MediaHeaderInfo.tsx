@@ -1,4 +1,5 @@
 import { Calendar, Clock, Star, Tv } from "lucide-react";
+import "./style.scss";
 
 type MediaHeaderInfoProps = {
   rating: number;
