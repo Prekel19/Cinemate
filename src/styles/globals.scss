@@ -89,18 +89,23 @@ body {
   }
 
   &-content {
-    display: grid;
-    grid-template-columns: 7fr 3fr;
-    gap: 1.8rem;
+    display: flex;
+    gap: 2rem;
 
     > * {
       display: flex;
       flex-direction: column;
+      flex: 1;
       gap: 1.25rem;
     }
 
     &-left {
+      max-width: calc(70% - 1rem);
       gap: 1.75rem;
+    }
+
+    &-right {
+      max-width: calc(30% - 1rem);
     }
   }
 

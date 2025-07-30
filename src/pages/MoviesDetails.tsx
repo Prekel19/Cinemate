@@ -1,4 +1,5 @@
 import { LoadingSpinner } from "@/components/LoadingSpinner/LoadingSpinner";
+import { CastCarousel } from "@/components/MediaDetails/CastCarousel/CastCarousel";
 import { MediaBanner } from "@/components/MediaDetails/MediaBanner";
 import { MediaDetailsButtons } from "@/components/MediaDetails/MediaDetailsButtons";
 import { MediaDetailsOverview } from "@/components/MediaDetails/MediaDetailsOverview";
@@ -64,6 +65,7 @@ export const MovieDetails = () => {
               <div className="media-details-content">
                 <div className="media-details-content-left">
                   <MediaDetailsOverview overview={data.overview} />
+                  <CastCarousel cast={credits.cast} />
                 </div>
                 <div className="media-details-content-right">
                   <Container className="media-details-info">

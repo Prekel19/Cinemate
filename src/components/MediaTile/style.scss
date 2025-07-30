@@ -6,16 +6,6 @@
   border-radius: 8px;
   overflow: hidden;
 
-  &-poster {
-    aspect-ratio: 2/3;
-
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-  }
-
   &-content {
     display: flex;
     flex-direction: column;

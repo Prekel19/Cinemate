@@ -1,0 +1,43 @@
+@use "@/styles/constants" as c;
+@use "@/styles/mixin" as m;
+
+.cast {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+
+  &-title {
+    @include m.title();
+  }
+
+  &-carousel {
+    max-width: 100%;
+    display: grid;
+    grid-template-columns: repeat(10, 150px);
+    gap: 1rem;
+    padding-bottom: 1rem;
+    overflow-x: scroll;
+  }
+
+  &-tile {
+    background: c.$bg-dark-gray-50;
+    display: flex;
+    flex-direction: column;
+    border-radius: 8px;
+    overflow: hidden;
+
+    &_body {
+      padding: 0.6rem;
+    }
+
+    &-name {
+      @include m.title(c.$font-white, 0.9rem, 110%);
+      font-weight: 500;
+      padding-bottom: 0.3rem;
+    }
+
+    &-character {
+      @include m.info();
+    }
+  }
+}
