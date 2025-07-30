@@ -5,7 +5,7 @@ import { MediaDetailsOverview } from "@/components/MediaDetails/MediaDetailsOver
 import { MediaDetailsTitle } from "@/components/MediaDetails/MediaDetailsTitle";
 import { MediaHeaderInfo } from "@/components/MediaDetails/MediaHeaderInfo";
 import { Container } from "@/components/ui/Container/Container";
-import type { Movie } from "@/models/types";
+import type { Credits, Movie } from "@/models/types";
 import { getFormatedSum } from "@/utility/getFormatedSum";
 import { getTmdbApi } from "@/utility/getTmdbApi";
 import { useQuery } from "@tanstack/react-query";
@@ -23,15 +23,29 @@ export const MovieDetails = () => {
       }),
   });
 
-  if (isError) {
-    return <div>Error: {error.message}</div>;
+  const {
+    data: credits,
+    isPending: isCreditsPending,
+    isError: isCreditsError,
+    error: creditsError,
+  } = useQuery({
+    queryKey: ["media-cast", { id }],
+    queryFn: () =>
+      getTmdbApi<Credits>(`/movie/${id}/credits`, {
+        language: "en-US",
+      }),
+  });
+
+  if (isError || isCreditsError) {
+    return <div>Error: {error?.message || creditsError?.message}</div>;
   }
 
   console.log(data);
+  console.log(credits);
 
   return (
     <>
-      {isPending ? (
+      {isPending || isCreditsPending ? (
         <LoadingSpinner />
       ) : (
         <div className="media-details">
@@ -54,6 +68,10 @@ export const MovieDetails = () => {
                 <div className="media-details-content-right">
                   <Container className="media-details-info">
                     <h3 className="media-details-info-title">Details</h3>
+                    <div className="media-details-info-section">
+                      <span>Director</span>
+                      <p>{credits.crew[0].name}</p>
+                    </div>
                     <div className="media-details-info-section">
                       <span>Original title</span>
                       <p>{data.original_title}</p>
