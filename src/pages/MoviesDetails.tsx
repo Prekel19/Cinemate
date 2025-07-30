@@ -3,12 +3,12 @@ import { MediaBanner } from "@/components/MediaDetails/MediaBanner";
 import { MediaDetailsButtons } from "@/components/MediaDetails/MediaDetailsButtons";
 import { MediaDetailsOverview } from "@/components/MediaDetails/MediaDetailsOverview";
 import { MediaDetailsTitle } from "@/components/MediaDetails/MediaDetailsTitle";
+import { MediaHeaderInfo } from "@/components/MediaDetails/MediaHeaderInfo";
 import { Container } from "@/components/ui/Container/Container";
 import type { Movie } from "@/models/types";
 import { getFormatedSum } from "@/utility/getFormatedSum";
 import { getTmdbApi } from "@/utility/getTmdbApi";
 import { useQuery } from "@tanstack/react-query";
-import { Calendar, Clock, Star } from "lucide-react";
 import { Fade } from "react-awesome-reveal";
 import { useParams } from "react-router";
 
@@ -40,20 +40,11 @@ export const MovieDetails = () => {
             <div className="media-details-content-wrapper">
               <div className="media-details-header">
                 <MediaDetailsTitle title={data.title} tagline={data.tagline} />
-                <div className="media-details-header-info">
-                  <p>
-                    <Star size={20} color="#eab308" />
-                    {Math.round(data.vote_average * 10) / 10}/10
-                  </p>
-                  <p>
-                    <Clock size={20} color="#9ca3af" />
-                    {data.runtime} min
-                  </p>
-                  <p>
-                    <Calendar size={20} color="#9ca3af" />
-                    {new Date(data.release_date).getFullYear()}
-                  </p>
-                </div>
+                <MediaHeaderInfo
+                  rating={data.vote_average}
+                  runtime={data.runtime}
+                  releaseDate={data.release_date}
+                />
               </div>
               <MediaDetailsButtons />
               <div className="media-details-content">

@@ -9,6 +9,7 @@ type SearchBarResultsProps = {
 
 type SearchBarResultProps = {
   searchResult: SearchResults;
+  media: "movies" | "series";
 };
 
 export const SearchBarResults = ({ searchResults }: SearchBarResultsProps) => {
@@ -31,7 +32,7 @@ export const SearchBarResults = ({ searchResults }: SearchBarResultsProps) => {
             Movies
           </h3>
           {movies.map((movie) => (
-            <SearchBarResult key={movie.id} searchResult={movie} />
+            <SearchBarResult key={movie.id} searchResult={movie} media="movies" />
           ))}
         </div>
       )}
@@ -42,7 +43,7 @@ export const SearchBarResults = ({ searchResults }: SearchBarResultsProps) => {
             Tv Shows
           </h3>
           {series.map((show) => (
-            <SearchBarResult key={show.id} searchResult={show} />
+            <SearchBarResult key={show.id} searchResult={show} media="series" />
           ))}
         </div>
       )}
@@ -50,7 +51,7 @@ export const SearchBarResults = ({ searchResults }: SearchBarResultsProps) => {
   );
 };
 
-const SearchBarResult = ({ searchResult }: SearchBarResultProps) => {
+const SearchBarResult = ({ searchResult, media }: SearchBarResultProps) => {
   const yearOfRelease = new Date(
     (searchResult.first_air_date || searchResult.release_date) ?? 0
   ).getFullYear();
@@ -60,7 +61,7 @@ const SearchBarResult = ({ searchResult }: SearchBarResultProps) => {
 
   return (
     <div className="searchbar-result">
-      <Link to="/">
+      <Link to={`/${media}/${searchResult.id}`}>
         <div className="searchbar-result-poster">
           <img src={img} alt={searchResult.name || searchResult.title} />
         </div>
