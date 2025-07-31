@@ -36,13 +36,16 @@ export const Home = () => {
     });
 
   useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          fetchNextPage();
-        }
-      });
-    });
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            fetchNextPage();
+          }
+        });
+      },
+      { rootMargin: "0px 0px 400px 0px" }
+    );
 
     if (endOfPageRef.current && hasNextPage) {
       observer.observe(endOfPageRef.current);
@@ -57,7 +60,7 @@ export const Home = () => {
     return <div>Error</div>;
   }
 
-  console.log(data?.pages[0]?.data.results);
+  console.log(data?.pages);
 
   return (
     <>

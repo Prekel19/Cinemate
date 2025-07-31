@@ -53,16 +53,12 @@ body {
 }
 
 .home-discover {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
   gap: 1rem;
   padding: 1.5rem 1.5% 0;
   border-top: 1px solid c.$border-dark-gray;
   margin: 0 auto;
-
-  > * {
-    flex: 1 1 calc(20% - 1rem);
-  }
 }
 
 // MOVIE & SERIES DETAILS
