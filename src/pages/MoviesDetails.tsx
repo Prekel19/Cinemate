@@ -75,6 +75,10 @@ export const MovieDetails = () => {
                       <p>{credits.crew[0].name}</p>
                     </div>
                     <div className="media-details-info-section">
+                      <span>Status</span>
+                      <p>{data.status}</p>
+                    </div>
+                    <div className="media-details-info-section">
                       <span>Original title</span>
                       <p>{data.original_title}</p>
                     </div>
