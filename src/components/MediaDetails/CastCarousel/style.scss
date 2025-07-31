@@ -12,8 +12,8 @@
 
   &-carousel {
     max-width: 100%;
-    display: grid;
-    grid-template-columns: repeat(10, 150px);
+    display: flex;
+    flex-wrap: nowrap;
     gap: 1rem;
     padding-bottom: 1rem;
     overflow-x: scroll;
@@ -23,6 +23,7 @@
     background: c.$bg-dark-gray-50;
     display: flex;
     flex-direction: column;
+    flex: 0 0 150px;
     border-radius: 8px;
     overflow: hidden;
 
