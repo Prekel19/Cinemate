@@ -109,7 +109,7 @@ body {
     align-items: start;
 
     &-title {
-      @include m.title(c.$font-white, 1.2rem);
+      @include m.title(1.2rem);
     }
 
     &-section {

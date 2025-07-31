@@ -5,6 +5,7 @@ import { MediaDetailsButtons } from "@/components/MediaDetails/MediaDetailsButto
 import { MediaDetailsOverview } from "@/components/MediaDetails/MediaDetailsOverview";
 import { MediaDetailsTitle } from "@/components/MediaDetails/MediaDetailsTitle";
 import { MediaHeaderInfo } from "@/components/MediaDetails/MediaHeaderInfo";
+import { SeasonList } from "@/components/MediaDetails/SeasonList/SeasonList";
 import { Container } from "@/components/ui/Container/Container";
 import type { Credits, Series } from "@/models/types";
 import { getTmdbApi } from "@/utility/getTmdbApi";
@@ -64,6 +65,7 @@ export const SeriesDetails = () => {
                 <div className="media-details-content-left">
                   <MediaDetailsOverview overview={data.overview} />
                   <CastCarousel cast={credits.cast} />
+                  <SeasonList seasons={data.seasons} />
                 </div>
                 <div className="media-details-content-right">
                   <Container>

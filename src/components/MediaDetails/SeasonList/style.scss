@@ -1,0 +1,75 @@
+@use "@/styles/constants" as c;
+@use "@/styles/mixin" as m;
+
+.season {
+  &-list {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 0.9rem;
+  }
+
+  &-item {
+    background: c.$bg-dark-gray-50;
+    flex-direction: row;
+    gap: 0;
+    padding: 0;
+  }
+
+  &-poster {
+    max-width: 154px;
+    width: 100%;
+    aspect-ratio: 2/3;
+
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      object-position: top;
+    }
+  }
+
+  &-body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 0.9rem;
+    padding: 1rem;
+
+    &-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 2rem;
+    }
+  }
+
+  &-title {
+    @include m.title(1rem);
+    font-weight: 500;
+  }
+
+  &-episodes {
+    background: c.$bg-gray;
+    font-size: 0.75rem;
+    line-height: 110%;
+    padding: 0.4rem;
+    border-radius: 99px;
+  }
+
+  &-subtitle {
+    @include m.info();
+  }
+
+  &-overview {
+    @include m.text();
+    max-width: 100%;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+  }
+
+  &-rating {
+    @include m.info();
+  }
+}

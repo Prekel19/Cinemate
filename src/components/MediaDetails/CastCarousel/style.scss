@@ -32,7 +32,7 @@
     }
 
     &-name {
-      @include m.title(c.$font-white, 0.9rem, 110%);
+      @include m.title(0.9rem);
       font-weight: 500;
       padding-bottom: 0.3rem;
     }

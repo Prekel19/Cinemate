@@ -22,7 +22,8 @@
 
 // TITLE
 .media-details-title {
-  @include m.title(c.$font-white, 2.5rem, 80%);
+  @include m.title(2.5rem);
+  line-height: 80%;
 }
 
 // TAGLINE
