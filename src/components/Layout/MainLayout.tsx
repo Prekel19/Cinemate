@@ -1,5 +1,5 @@
 import { Header } from "./Header/Header";
-import { Outlet } from "react-router";
+import { Outlet, ScrollRestoration } from "react-router";
 import { Footer } from "./Footer/Footer";
 import { BackToTop } from "../BackToTop/BackToTop";
 
@@ -8,6 +8,7 @@ export const MainLayout = () => {
     <div className="app">
       <Header />
       <Outlet />
+      <ScrollRestoration />
       <BackToTop />
       <Footer />
     </div>
