@@ -1,10 +1,12 @@
 import { LoadingSpinner } from "@/components/LoadingSpinner/LoadingSpinner";
+import { CastCarousel } from "@/components/MediaDetails/CastCarousel/CastCarousel";
 import { MediaBanner } from "@/components/MediaDetails/MediaBanner";
 import { MediaDetailsButtons } from "@/components/MediaDetails/MediaDetailsButtons";
 import { MediaDetailsOverview } from "@/components/MediaDetails/MediaDetailsOverview";
 import { MediaDetailsTitle } from "@/components/MediaDetails/MediaDetailsTitle";
 import { MediaHeaderInfo } from "@/components/MediaDetails/MediaHeaderInfo";
-import type { Series } from "@/models/types";
+import { Container } from "@/components/ui/Container/Container";
+import type { Credits, Series } from "@/models/types";
 import { getTmdbApi } from "@/utility/getTmdbApi";
 import { useQuery } from "@tanstack/react-query";
 import { Fade } from "react-awesome-reveal";
@@ -20,16 +22,29 @@ export const SeriesDetails = () => {
         language: "en-US",
       }),
   });
+  const {
+    data: credits,
+    isPending: isCreditsPending,
+    isError: isCreditsError,
+    error: creditsError,
+  } = useQuery({
+    queryKey: ["media-cast", { id }],
+    queryFn: () =>
+      getTmdbApi<Credits>(`/tv/${id}/credits`, {
+        language: "en-US",
+      }),
+  });
 
-  if (isError) {
-    return <div>Error: {error.message}</div>;
+  if (isError || isCreditsError) {
+    return <div>Error: {error?.message || creditsError?.message}</div>;
   }
 
   console.log(data);
+  console.log(credits);
 
   return (
     <>
-      {isPending ? (
+      {isPending || isCreditsPending ? (
         <LoadingSpinner />
       ) : (
         <div className="media-details">
@@ -48,8 +63,33 @@ export const SeriesDetails = () => {
               <div className="media-details-content">
                 <div className="media-details-content-left">
                   <MediaDetailsOverview overview={data.overview} />
+                  <CastCarousel cast={credits.cast} />
                 </div>
-                <div className="media-details-content-right"></div>
+                <div className="media-details-content-right">
+                  <Container>
+                    <h3 className="media-details-info-title">Details</h3>
+                    <div className="media-details-info-section">
+                      <span>{data.created_by.length > 1 ? "Creators" : "Creator"}</span>
+                      <p>{data.created_by.map((person) => person.name).join(", ")}</p>
+                    </div>
+                    <div className="media-details-info-section">
+                      <span>Status</span>
+                      <p>{data.status}</p>
+                    </div>
+                    <div className="media-details-info-section">
+                      <span>Original title</span>
+                      <p>{data.original_name}</p>
+                    </div>
+                    <div className="media-details-info-section">
+                      <span>Genres</span>
+                      <p>{data.genres.map((item) => item.name).join(", ")}</p>
+                    </div>
+                    <div className="media-details-info-section">
+                      <span>Total Episodes</span>
+                      <p>{data.number_of_episodes}</p>
+                    </div>
+                  </Container>
+                </div>
               </div>
             </div>
           </Fade>

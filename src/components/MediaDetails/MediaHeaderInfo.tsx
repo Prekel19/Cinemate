@@ -10,8 +10,8 @@ type MediaHeaderInfoProps = {
 
 export const MediaHeaderInfo = ({
   rating,
-  seasons,
-  runtime,
+  seasons = 0,
+  runtime = 0,
   releaseDate,
 }: MediaHeaderInfoProps) => {
   return (
@@ -20,8 +20,8 @@ export const MediaHeaderInfo = ({
         <Star size={20} color="#eab308" />
         <p>{Math.round(rating * 10) / 10}/10</p>
       </div>
-      {runtime && <Runtime runtime={runtime} />}
-      {seasons && <NumberOfSeasons seasons={seasons} />}
+      {runtime > 0 && <Runtime runtime={runtime} />}
+      {seasons > 0 && <NumberOfSeasons seasons={seasons} />}
       <div>
         <Calendar size={20} color="#9ca3af" />
         <p>{new Date(releaseDate).getFullYear()}</p>
