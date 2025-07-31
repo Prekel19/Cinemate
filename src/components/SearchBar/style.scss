@@ -82,6 +82,7 @@
   // SEARCHBAR RESULTS
   &-results {
     background: c.$bg-dark-blue-95;
+    backdrop-filter: blur(4px);
     max-height: 45vh;
     width: 100%;
     display: flex;

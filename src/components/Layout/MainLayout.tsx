@@ -8,8 +8,8 @@ export const MainLayout = () => {
     <div className="app">
       <Header />
       <Outlet />
-      <ScrollRestoration />
       <BackToTop />
+      <ScrollRestoration />
       <Footer />
     </div>
   );
