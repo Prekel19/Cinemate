@@ -219,3 +219,12 @@ export type Credits = {
   cast: Cast[];
   crew: Crew[];
 };
+
+export type Watchlist = {
+  id: number;
+  imgUrl: string;
+  title: string;
+  rating: number;
+  mediaType: "movie" | "tv";
+  releaseDate: string;
+};

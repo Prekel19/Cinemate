@@ -60,7 +60,14 @@ export const SeriesDetails = () => {
                   releaseDate={data.first_air_date}
                 />
               </div>
-              <MediaDetailsButtons />
+              <MediaDetailsButtons
+                id={data.id}
+                imgUrl={`https://image.tmdb.org/t/p/w342${data.poster_path}`}
+                title={data.name}
+                mediaType="tv"
+                rating={data.vote_average}
+                releaseDate={data.first_air_date}
+              />
               <div className="media-details-content">
                 <div className="media-details-content-left">
                   <MediaDetailsOverview overview={data.overview} />

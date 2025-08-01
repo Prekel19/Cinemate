@@ -72,7 +72,7 @@ export const Home = () => {
         <Fade className="home-fade">
           <HomeCarousel trendings={trending.results} />
           <SearchBar />
-          <div className="home-discover">
+          <div className="home-discover media-tiles-container">
             <Fade triggerOnce>
               {data?.pages &&
                 data.pages.map((page) => {

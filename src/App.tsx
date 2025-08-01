@@ -4,6 +4,7 @@ import { Home } from "./pages/Home";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { SeriesDetails } from "./pages/SeriesDetails";
 import { MovieDetails } from "./pages/MoviesDetails";
+import { Watchlist } from "./pages/Watchlist";
 
 const queryClient = new QueryClient();
 
@@ -24,6 +25,10 @@ function App() {
         {
           path: "/series/:id",
           element: <SeriesDetails />,
+        },
+        {
+          path: "/watchlist",
+          element: <Watchlist />,
         },
       ],
     },

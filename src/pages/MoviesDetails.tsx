@@ -61,7 +61,14 @@ export const MovieDetails = () => {
                   releaseDate={data.release_date}
                 />
               </div>
-              <MediaDetailsButtons />
+              <MediaDetailsButtons
+                id={data.id}
+                imgUrl={`https://image.tmdb.org/t/p/w342${data.poster_path}`}
+                title={data.title}
+                mediaType="movie"
+                rating={data.vote_average}
+                releaseDate={data.release_date}
+              />
               <div className="media-details-content">
                 <div className="media-details-content-left">
                   <MediaDetailsOverview overview={data.overview} />
