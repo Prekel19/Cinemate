@@ -1,5 +1,6 @@
 import { Container } from "@/components/ui/Container/Container";
 import type { Seasons } from "@/models/types";
+import { baseImgUrl, posterSizes } from "@/models/data";
 import { Star } from "lucide-react";
 import "./style.scss";
 
@@ -13,7 +14,7 @@ export const SeasonList = ({ seasons }: SeasonListProps) => {
       {seasons.map((season) => (
         <Container key={season.id} className="season-item">
           <div className="season-poster">
-            <img src={`https://image.tmdb.org/t/p/w342${season.poster_path}`} />
+            <img src={`${baseImgUrl}${posterSizes.w342}${season.poster_path}`} />
           </div>
           <div className="season-body">
             <div className="season-body-header">

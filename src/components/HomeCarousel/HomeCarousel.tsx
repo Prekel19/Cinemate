@@ -1,6 +1,7 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import type { TrendingsResults } from "@/models/types";
+import { backdropSizes, baseImgUrl } from "@/models/data";
 import { SlideContent } from "./SlideContent";
 import { AsyncImage } from "loadable-image";
 import "./style.scss";
@@ -30,7 +31,7 @@ export const HomeCarousel = ({ trendings }: HomeCarouselProps) => {
         {sortedTrendings.map((trending) => (
           <SwiperSlide key={trending.id}>
             <AsyncImage
-              src={`https://image.tmdb.org/t/p/original/${trending.backdrop_path}`}
+              src={`${baseImgUrl}${backdropSizes.original}${trending.backdrop_path}`}
               style={{ width: 1920, height: 1080 }}
               loader={<div style={{ background: "#000" }} />}
               alt={trending.title}

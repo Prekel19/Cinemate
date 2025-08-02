@@ -62,7 +62,7 @@ export const SeriesDetails = () => {
               </div>
               <MediaDetailsButtons
                 id={data.id}
-                imgUrl={`https://image.tmdb.org/t/p/w342${data.poster_path}`}
+                imgUrl={data.poster_path}
                 title={data.name}
                 mediaType="tv"
                 rating={data.vote_average}

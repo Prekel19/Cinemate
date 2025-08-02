@@ -1,7 +1,8 @@
 import { Link } from "react-router";
-import "./style.scss";
 import { AspectRatio } from "@radix-ui/react-aspect-ratio";
+import { baseImgUrl, posterSizes } from "@/models/data";
 import { Star } from "lucide-react";
+import "./style.scss";
 
 type MediaTileProps = {
   id: number;
@@ -27,7 +28,10 @@ export const MediaTile = ({
     <div className="media-tile">
       <Link to={`/${media}/${id}`}>
         <AspectRatio className="media-tile-poster" ratio={2 / 3}>
-          <img src={imgUrl ?? ""} alt={`${title} poster`} />
+          <img
+            src={imgUrl && `${baseImgUrl}${posterSizes.w342}${imgUrl}`}
+            alt={`${title} poster`}
+          />
         </AspectRatio>
         <div className="media-tile-content">
           <h3 className="media-tile-title" title={title}>

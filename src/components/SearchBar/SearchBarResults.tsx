@@ -1,7 +1,8 @@
 import type { Search, SearchResults } from "@/models/types";
+import { baseImgUrl, posterSizes } from "@/models/data";
+import { SearchBarNoResults } from "./SearchBarNoResults";
 import { Film, Tv } from "lucide-react";
 import { Link } from "react-router";
-import { SearchBarNoResults } from "./SearchBarNoResults";
 
 type SearchBarResultsProps = {
   searchResults: Search;
@@ -56,7 +57,7 @@ const SearchBarResult = ({ searchResult, media }: SearchBarResultProps) => {
     (searchResult.first_air_date || searchResult.release_date) ?? 0
   ).getFullYear();
   const img = searchResult.poster_path
-    ? `https://image.tmdb.org/t/p/w92/${searchResult.poster_path}`
+    ? `${baseImgUrl}${posterSizes.w92}/${searchResult.poster_path}`
     : "";
 
   return (

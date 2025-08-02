@@ -80,7 +80,7 @@ export const Home = () => {
                     <MediaTile
                       key={item.id}
                       id={item.id}
-                      imgUrl={`https://image.tmdb.org/t/p/w342${item.poster_path}`}
+                      imgUrl={item.poster_path}
                       title={item.title || item.name || ""}
                       mediaType={item.media_type}
                       rating={item.vote_average}

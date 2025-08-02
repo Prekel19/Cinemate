@@ -1,3 +1,5 @@
+import type { backdropSizes, posterSizes, profileSizes } from "./data";
+
 export type TMDBResponse = {
   page: number;
   total_pages: number;
@@ -228,3 +230,7 @@ export type Watchlist = {
   mediaType: "movie" | "tv";
   releaseDate: string;
 };
+
+export type PosterSize = keyof typeof posterSizes;
+export type backdropSize = keyof typeof backdropSizes;
+export type ProfileSize = keyof typeof profileSizes;
