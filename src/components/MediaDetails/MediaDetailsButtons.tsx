@@ -21,7 +21,7 @@ export const MediaDetailsButtons = ({
 
   const handleCopy = () => {
     navigator.clipboard.writeText(window.location.href);
-    toast.success("Copied!");
+    toast.success("Link has been copied!");
   };
 
   return (
