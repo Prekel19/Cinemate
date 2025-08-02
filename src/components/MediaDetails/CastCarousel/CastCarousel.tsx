@@ -7,6 +7,10 @@ type CastCarouselProps = {
 };
 
 export const CastCarousel = ({ cast }: CastCarouselProps) => {
+  if (cast.length === 0) {
+    return null;
+  }
+
   return (
     <div className="cast">
       <h3 className="cast-title">Cast</h3>
