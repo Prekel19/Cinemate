@@ -10,7 +10,10 @@ export const CastTile = ({ actor }: CastTileProps) => {
   return (
     <div className="cast-tile">
       <AspectRatio className="cast-tile-profile" ratio={2 / 3}>
-        <img src={`${baseImgUrl}${profileSizes.w185}${actor.profile_path}`} />
+        <img
+          src={`${baseImgUrl}${profileSizes.w185}${actor.profile_path}`}
+          alt={actor.name}
+        />
       </AspectRatio>
       <div className="cast-tile_body">
         <h3 className="cast-tile-name">{actor.name}</h3>

@@ -14,7 +14,10 @@ export const SeasonList = ({ seasons }: SeasonListProps) => {
       {seasons.map((season) => (
         <Container key={season.id} className="season-item">
           <div className="season-poster">
-            <img src={`${baseImgUrl}${posterSizes.w342}${season.poster_path}`} />
+            <img
+              src={`${baseImgUrl}${posterSizes.w342}${season.poster_path}`}
+              alt={`${season.name} poster`}
+            />
           </div>
           <div className="season-body">
             <div className="season-body-header">

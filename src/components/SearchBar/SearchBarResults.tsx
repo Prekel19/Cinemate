@@ -64,7 +64,7 @@ const SearchBarResult = ({ searchResult, media }: SearchBarResultProps) => {
     <div className="searchbar-result">
       <Link to={`/${media}/${searchResult.id}`}>
         <div className="searchbar-result-poster">
-          <img src={img} alt={searchResult.name || searchResult.title} />
+          <img src={img} alt={`${searchResult.name || searchResult.title} poster`} />
         </div>
         <div className="searchbar-result-info">
           <h4 className="searchbar-result-title">
