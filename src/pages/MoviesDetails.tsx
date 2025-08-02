@@ -1,4 +1,5 @@
 import { LoadingSpinner } from "@/components/LoadingSpinner/LoadingSpinner";
+import { BoxOffice } from "@/components/MediaDetails/BoxOffice/BoxOffice";
 import { CastCarousel } from "@/components/MediaDetails/CastCarousel/CastCarousel";
 import { MediaBanner } from "@/components/MediaDetails/MediaBanner";
 import { MediaDetailsButtons } from "@/components/MediaDetails/MediaDetailsButtons";
@@ -7,7 +8,7 @@ import { MediaDetailsTitle } from "@/components/MediaDetails/MediaDetailsTitle";
 import { MediaHeaderInfo } from "@/components/MediaDetails/MediaHeaderInfo";
 import { Container } from "@/components/ui/Container/Container";
 import type { Credits, Movie } from "@/models/types";
-import { getFormatedSum } from "@/utility/getFormatedSum";
+import { getFormatedDate } from "@/utility/getFormatedDate";
 import { getTmdbApi } from "@/utility/getTmdbApi";
 import { useQuery } from "@tanstack/react-query";
 import { Fade } from "react-awesome-reveal";
@@ -72,6 +73,7 @@ export const MovieDetails = () => {
               <div className="media-details-content">
                 <div className="media-details-content-left">
                   <MediaDetailsOverview overview={data.overview} />
+                  <BoxOffice budget={data.budget} revenue={data.revenue} />
                   <CastCarousel cast={credits.cast} />
                 </div>
                 <div className="media-details-content-right">
@@ -80,6 +82,10 @@ export const MovieDetails = () => {
                     <div className="media-details-info-section">
                       <span>Director</span>
                       <p>{credits.crew[0].name}</p>
+                    </div>
+                    <div className="media-details-info-section">
+                      <span>Premiere</span>
+                      <p>{getFormatedDate(data.release_date)}</p>
                     </div>
                     <div className="media-details-info-section">
                       <span>Status</span>
@@ -92,17 +98,6 @@ export const MovieDetails = () => {
                     <div className="media-details-info-section">
                       <span>Genres</span>
                       <p>{data.genres.map((item) => item.name).join(", ")}</p>
-                    </div>
-                  </Container>
-                  <Container className="media-details-info">
-                    <h3 className="media-details-info-title">Box Office</h3>
-                    <div className="media-details-info-section">
-                      <span>Budget</span>
-                      <p>{data.budget ? getFormatedSum(data.budget) : "-"}</p>
-                    </div>
-                    <div className="media-details-info-section">
-                      <span>Revenue</span>
-                      <p>{data.revenue ? getFormatedSum(data.revenue) : "-"}</p>
                     </div>
                   </Container>
                 </div>

@@ -1,0 +1,30 @@
+@use "@/styles/constants" as c;
+@use "@/styles/mixin" as m;
+
+.box-office {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+
+  &_title {
+    @include m.title();
+  }
+
+  &_content {
+    display: flex;
+    gap: 1rem;
+  }
+
+  &_item {
+    background: c.$bg-dark-gray-50;
+    gap: 0.6rem;
+    font-size: 0.9rem;
+
+    &-title {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: c.$font-gray;
+    }
+  }
+}

@@ -79,7 +79,11 @@ export const SeriesDetails = () => {
                     <h3 className="media-details-info-title">Details</h3>
                     <div className="media-details-info-section">
                       <span>{data.created_by.length > 1 ? "Creators" : "Creator"}</span>
-                      <p>{data.created_by.map((person) => person.name).join(", ")}</p>
+                      <p>
+                        {data.created_by.length > 0
+                          ? data.created_by.map((person) => person.name).join(", ")
+                          : "-"}
+                      </p>
                     </div>
                     <div className="media-details-info-section">
                       <span>Status</span>
