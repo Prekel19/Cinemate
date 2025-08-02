@@ -26,11 +26,11 @@ export const MediaDetailsButtons = ({
 
   return (
     <div className="media-details-buttons">
-      <Button className="media-details-button watchlist" onClick={handleWatchlist}>
+      <Button className="media-details-button watchlist-btn" onClick={handleWatchlist}>
         <Bookmark size={24} color={isOnWatchlist(id) ? "#eab308" : "#ffffff"} />
         Add to Watchlist
       </Button>
-      <Button className="media-details-button share" onClick={handleCopy}>
+      <Button className="media-details-button share-btn" onClick={handleCopy}>
         <Share size={24} /> Share
       </Button>
     </div>
