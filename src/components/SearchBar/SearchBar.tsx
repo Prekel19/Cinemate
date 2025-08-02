@@ -65,7 +65,10 @@ export const SearchBar = () => {
   return (
     <div className="searchbar">
       <div className="searchbar-container" ref={searchContainerRef}>
-        <div className={`searchbar-input ${showResults ? "active" : ""}`}>
+        <div
+          className={`searchbar-input ${showResults ? "active" : ""}`}
+          onClick={() => searchInputRef.current?.focus()}
+        >
           <SearchIcon color="#374151" />
           <div className="searchbar-input-field">
             <input
