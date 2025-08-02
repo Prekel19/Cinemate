@@ -1,10 +1,12 @@
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { createBrowserRouter, RouterProvider } from "react-router";
 import { MainLayout } from "./components/Layout/MainLayout";
 import { Home } from "./pages/Home";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { SeriesDetails } from "./pages/SeriesDetails";
 import { MovieDetails } from "./pages/MoviesDetails";
 import { Watchlist } from "./pages/Watchlist";
+import { Movies } from "./pages/Movies";
+import { Series } from "./pages/Series";
 
 const queryClient = new QueryClient();
 
@@ -19,8 +21,16 @@ function App() {
           element: <Home />,
         },
         {
+          path: "/movies",
+          element: <Movies />,
+        },
+        {
           path: "/movies/:id",
           element: <MovieDetails />,
+        },
+        {
+          path: "series",
+          element: <Series />,
         },
         {
           path: "/series/:id",
