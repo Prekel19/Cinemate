@@ -67,6 +67,20 @@ body {
   border-top: 1px solid c.$border-dark-gray;
 }
 
+// MOVIES
+.movies {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+// SERIES
+.series {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
 // MOVIE & SERIES DETAILS
 .media-details {
   background: #000;

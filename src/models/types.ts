@@ -260,6 +260,7 @@ export type SeriesResults = {
   original_language: string;
   name: string;
   original_name: string;
+  origin_country: string[];
   overview: string;
   popularity: number;
   poster_path: string;
