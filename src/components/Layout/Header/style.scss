@@ -2,6 +2,7 @@
 
 .header {
   background: c.$bg-black-95;
+  backdrop-filter: blur(3px);
   position: sticky;
   top: 0;
   width: 100%;
