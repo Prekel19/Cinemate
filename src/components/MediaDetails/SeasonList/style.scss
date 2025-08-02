@@ -1,6 +1,16 @@
 @use "@/styles/constants" as c;
 @use "@/styles/mixin" as m;
 
+.seasons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+
+  &-title {
+    @include m.title();
+  }
+}
+
 .season {
   &-list {
     display: grid;
