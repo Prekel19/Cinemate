@@ -58,7 +58,7 @@ const SearchBarResult = ({ searchResult, media }: SearchBarResultProps) => {
   ).getFullYear();
   const img = searchResult.poster_path
     ? `${baseImgUrl}${posterSizes.w92}/${searchResult.poster_path}`
-    : "";
+    : undefined;
 
   return (
     <div className="searchbar-result">
