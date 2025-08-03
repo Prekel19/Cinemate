@@ -282,3 +282,12 @@ export type Sorting = {
   name: string;
   value: string;
 };
+
+export type FilterContext = {
+  onGenresChange: (val: string) => void;
+  genres: string;
+  onYearChange: (val: string) => void;
+  year: string;
+  onSortingChange: (val: string) => void;
+  sorting: string;
+};

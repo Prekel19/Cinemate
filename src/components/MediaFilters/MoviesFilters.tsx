@@ -1,10 +1,4 @@
-import {
-  moviesGenres,
-  movieSorting,
-  seriesGenres,
-  seriesSorting,
-  years,
-} from "@/models/data";
+import { moviesGenres, movieSorting, years } from "@/models/data";
 import {
   Select,
   SelectContent,
@@ -12,41 +6,21 @@ import {
   SelectTrigger,
   SelectValue,
 } from "../ui/select";
+import { useMoviesFilterContext } from "@/context/MoviesFilterContext";
 import "./style.scss";
-import type { Genres, Sorting } from "@/models/types";
 
-type FilterState = {
-  value: string;
-  onChange: (val: string) => void;
-};
-
-type MediaFiltersProps = {
-  mediaType: "movie" | "tv";
-  genresState: FilterState;
-  yearState: FilterState;
-  sortingState: FilterState;
-};
-
-export const MediaFilters = ({
-  mediaType,
-  genresState,
-  yearState,
-  sortingState,
-}: MediaFiltersProps) => {
-  const genres: Genres[] = mediaType === "movie" ? moviesGenres : seriesGenres;
-  const sorting: Sorting[] = mediaType === "movie" ? movieSorting : seriesSorting;
+export const MoviesFilters = () => {
+  const { genres, onGenresChange, year, onYearChange, sorting, onSortingChange } =
+    useMoviesFilterContext();
 
   return (
     <div className="media-filters">
-      <Select
-        value={genresState.value}
-        onValueChange={(val) => genresState.onChange(val)}
-      >
+      <Select value={genres} onValueChange={(val) => onGenresChange(val)}>
         <SelectTrigger className="media-filters-trigger genres">
           <SelectValue placeholder="All Genres" />
         </SelectTrigger>
         <SelectContent className="media-filters-content">
-          {genres.map((item, index) => (
+          {moviesGenres.map((item, index) => (
             <SelectItem
               key={index}
               className="media-filters-item"
@@ -57,7 +31,8 @@ export const MediaFilters = ({
           ))}
         </SelectContent>
       </Select>
-      <Select value={yearState.value} onValueChange={(val) => yearState.onChange(val)}>
+
+      <Select value={year} onValueChange={(val) => onYearChange(val)}>
         <SelectTrigger className="media-filters-trigger year">
           <SelectValue placeholder="Release Year" />
         </SelectTrigger>
@@ -69,15 +44,13 @@ export const MediaFilters = ({
           ))}
         </SelectContent>
       </Select>
-      <Select
-        value={sortingState.value}
-        onValueChange={(val) => sortingState.onChange(val)}
-      >
+
+      <Select value={sorting} onValueChange={(val) => onSortingChange(val)}>
         <SelectTrigger className="media-filters-trigger sorting">
           <SelectValue placeholder="Sort by" />
         </SelectTrigger>
         <SelectContent className="media-filters-content">
-          {sorting.map((item, index) => (
+          {movieSorting.map((item, index) => (
             <SelectItem key={index} className="media-filters-item" value={item.value}>
               {item.name}
             </SelectItem>

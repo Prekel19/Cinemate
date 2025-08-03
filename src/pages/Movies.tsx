@@ -1,17 +1,16 @@
 import { LoadingSpinner } from "@/components/LoadingSpinner/LoadingSpinner";
-import { MediaFilters } from "@/components/MediaFilters/MediaFilters";
+import { MoviesFilters } from "@/components/MediaFilters/MoviesFilters";
 import { MediaTile } from "@/components/MediaTile/MediaTile";
+import { useMoviesFilterContext } from "@/context/MoviesFilterContext";
 import type { MovieDiscover } from "@/models/types";
 import { getTmdbPage } from "@/utility/getTmdbPage";
 import { useInfiniteQuery } from "@tanstack/react-query";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { Fade } from "react-awesome-reveal";
 import { ClipLoader } from "react-spinners";
 
 export const Movies = () => {
-  const [genres, setGenres] = useState<string>("");
-  const [year, setYear] = useState<string>("");
-  const [sorting, setSorting] = useState<string>("");
+  const { genres, year, sorting } = useMoviesFilterContext();
   const endOfPageRef = useRef<HTMLDivElement | null>(null);
 
   const { data, isPending, isError, fetchNextPage, isFetchingNextPage, hasNextPage } =
@@ -56,12 +55,7 @@ export const Movies = () => {
   console.log(genres);
   return (
     <div className="movies">
-      <MediaFilters
-        mediaType="movie"
-        genresState={{ value: genres, onChange: setGenres }}
-        yearState={{ value: year, onChange: setYear }}
-        sortingState={{ value: sorting, onChange: setSorting }}
-      />
+      <MoviesFilters />
       {isPending ? (
         <LoadingSpinner />
       ) : (

@@ -1,6 +1,8 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { createBrowserRouter, RouterProvider } from "react-router";
 import { MainLayout } from "./components/Layout/MainLayout";
+import { MoviesLayout } from "./components/Layout/MoviesLayout";
+import { SeriesLayout } from "./components/Layout/SeriesLayout";
 import { Home } from "./pages/Home";
 import { SeriesDetails } from "./pages/SeriesDetails";
 import { MovieDetails } from "./pages/MoviesDetails";
@@ -22,20 +24,33 @@ function App() {
         },
         {
           path: "/movies",
-          element: <Movies />,
-        },
-        {
-          path: "/movies/:id",
-          element: <MovieDetails />,
+          element: <MoviesLayout />,
+          children: [
+            {
+              index: true,
+              element: <Movies />,
+            },
+            {
+              path: "/movies/:id",
+              element: <MovieDetails />,
+            },
+          ],
         },
         {
           path: "series",
-          element: <Series />,
+          element: <SeriesLayout />,
+          children: [
+            {
+              index: true,
+              element: <Series />,
+            },
+            {
+              path: "/series/:id",
+              element: <SeriesDetails />,
+            },
+          ],
         },
-        {
-          path: "/series/:id",
-          element: <SeriesDetails />,
-        },
+
         {
           path: "/watchlist",
           element: <Watchlist />,
