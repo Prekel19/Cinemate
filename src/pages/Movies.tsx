@@ -4,19 +4,25 @@ import { MediaTile } from "@/components/MediaTile/MediaTile";
 import type { MovieDiscover } from "@/models/types";
 import { getTmdbPage } from "@/utility/getTmdbPage";
 import { useInfiniteQuery } from "@tanstack/react-query";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Fade } from "react-awesome-reveal";
 import { ClipLoader } from "react-spinners";
 
 export const Movies = () => {
+  const [genres, setGenres] = useState<string>("");
+  const [year, setYear] = useState<string>("");
+  const [sorting, setSorting] = useState<string>("");
   const endOfPageRef = useRef<HTMLDivElement | null>(null);
 
   const { data, isPending, isError, fetchNextPage, isFetchingNextPage, hasNextPage } =
     useInfiniteQuery({
-      queryKey: ["movies-discover"],
+      queryKey: ["movies-discover", { genres, year, sorting }],
       queryFn: ({ pageParam = 1 }) =>
         getTmdbPage<MovieDiscover>("discover/movie", pageParam, {
           language: "en-US",
+          with_genres: genres,
+          primary_release_year: year,
+          sort_by: sorting,
         }),
       initialPageParam: 1,
       getNextPageParam: (lastPage) => lastPage.nextPage,
@@ -47,10 +53,15 @@ export const Movies = () => {
     console.log("error");
   }
 
-  console.log(data?.pages);
+  console.log(genres);
   return (
     <div className="movies">
-      <MediaFilters mediaType="movie" />
+      <MediaFilters
+        mediaType="movie"
+        genresState={{ value: genres, onChange: setGenres }}
+        yearState={{ value: year, onChange: setYear }}
+        sortingState={{ value: sorting, onChange: setSorting }}
+      />
       {isPending ? (
         <LoadingSpinner />
       ) : (

@@ -277,3 +277,8 @@ export type MovieDiscover = TMDBResponse & {
 export type SeriesDiscover = TMDBResponse & {
   results: SeriesResults[];
 };
+
+export type Sorting = {
+  name: string;
+  value: string;
+};

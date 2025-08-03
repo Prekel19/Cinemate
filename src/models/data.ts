@@ -1,4 +1,4 @@
-import type { Genres } from "./types";
+import type { Genres, Sorting } from "./types";
 
 export const baseImgUrl: string = "https://image.tmdb.org/t/p/";
 
@@ -178,3 +178,44 @@ export const years: number[] = Array.from(
   { length: currentYear - 1969 },
   (_, i) => currentYear - i
 );
+
+export const sortingOptions: Sorting[] = [
+  {
+    name: "Popularity Descending",
+    value: "popularity.desc",
+  },
+  {
+    name: "Popularity Ascending",
+    value: "popularity.asc",
+  },
+  {
+    name: "Rating Descending",
+    value: "vote_average.desc",
+  },
+  {
+    name: "Rating Ascending",
+    value: "vote_average.asc",
+  },
+];
+
+export const movieSorting: Sorting[] = [
+  {
+    name: "Title (A-Z)",
+    value: "title.asc",
+  },
+  {
+    name: "Title (Z-A)",
+    value: "title.desc",
+  },
+].concat(sortingOptions);
+
+export const seriesSorting: Sorting[] = [
+  {
+    name: "Name (A-Z)",
+    value: "name.asc",
+  },
+  {
+    name: "Name (Z-A)",
+    value: "name.desc",
+  },
+].concat(sortingOptions);
