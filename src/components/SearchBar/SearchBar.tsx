@@ -11,15 +11,16 @@ import debounce from "lodash.debounce";
 import "./style.scss";
 
 export const SearchBar = () => {
-  const [search, setSearch] = useState<string>("");
+  const [search, setSearch] = useState<string>();
   const [showResults, setShowResults] = useState<boolean>(false);
+  const [debouncedSearch, setDebouncedSearch] = useState<string>("");
   const searchContainerRef = useRef<HTMLDivElement | null>(null);
   const searchInputRef = useRef<HTMLInputElement | null>(null);
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const handleInput = useCallback(
     debounce((value: string) => {
-      setSearch(value);
+      setDebouncedSearch(value);
     }, 600),
     []
   );
@@ -30,15 +31,15 @@ export const SearchBar = () => {
     isError,
     error,
   } = useQuery({
-    queryKey: ["searchbar", { search }],
+    queryKey: ["searchbar", { debouncedSearch }],
     queryFn: () =>
       getTmdbApi<Search>("search/multi", {
-        query: search.trim().toLocaleLowerCase(),
+        query: debouncedSearch,
         include_adult: false,
         language: "en-US",
         page: 1,
       }),
-    enabled: !!search,
+    enabled: !!debouncedSearch,
   });
 
   useEffect(() => {
@@ -74,6 +75,7 @@ export const SearchBar = () => {
             <input
               ref={searchInputRef}
               type="text"
+              value={search}
               placeholder="Search movies, TV series, and more..."
               onChange={(e) => handleInput(e.target.value)}
             />
@@ -92,7 +94,7 @@ export const SearchBar = () => {
           (searchResults.total_results !== 0 ? (
             <SearchBarResults searchResults={searchResults} />
           ) : (
-            <SearchBarNoResults search={search} />
+            <SearchBarNoResults search={debouncedSearch} />
           ))}
       </div>
     </div>
