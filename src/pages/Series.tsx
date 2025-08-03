@@ -1,4 +1,5 @@
 import { LoadingSpinner } from "@/components/LoadingSpinner/LoadingSpinner";
+import { MediaFilters } from "@/components/MediaFilters/MediaFilters";
 import { MediaTile } from "@/components/MediaTile/MediaTile";
 import type { SeriesDiscover } from "@/models/types";
 import { getTmdbPage } from "@/utility/getTmdbPage";
@@ -49,6 +50,7 @@ export const Series = () => {
   console.log(data?.pages);
   return (
     <div className="series">
+      <MediaFilters mediaType="tv" />
       {isPending ? (
         <LoadingSpinner />
       ) : (

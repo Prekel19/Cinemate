@@ -1,0 +1,34 @@
+@use "@/styles/constants" as c;
+
+.media-filters {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 0.9rem;
+  padding: 1rem 1.5%;
+  border-bottom: 1px solid c.$border-dark-gray;
+  color: c.$font-white;
+
+  &-trigger {
+    background: c.$bg-dark-gray;
+    width: 200px;
+    color: c.$font-white;
+    border-color: c.$border-gray;
+  }
+
+  &-content {
+    background: c.$bg-dark-gray;
+    max-height: 40vh;
+    color: c.$font-white;
+    border-color: c.$border-gray;
+  }
+
+  &-item {
+    color: c.$font-white;
+
+    &:hover,
+    &:focus {
+      background: c.$bg-gray;
+    }
+  }
+}
