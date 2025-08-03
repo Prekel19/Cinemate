@@ -81,11 +81,13 @@ export const MovieDetails = () => {
                     <h3 className="media-details-info-title">Details</h3>
                     <div className="media-details-info-section">
                       <span>Director</span>
-                      <p>{credits.crew[0].name}</p>
+                      <p>{credits.crew.length > 0 ? credits.crew[0].name : "-"}</p>
                     </div>
                     <div className="media-details-info-section">
                       <span>Premiere</span>
-                      <p>{getFormatedDate(data.release_date)}</p>
+                      <p>
+                        {data.release_date ? getFormatedDate(data.release_date) : "-"}
+                      </p>
                     </div>
                     <div className="media-details-info-section">
                       <span>Status</span>
@@ -97,7 +99,11 @@ export const MovieDetails = () => {
                     </div>
                     <div className="media-details-info-section">
                       <span>Genres</span>
-                      <p>{data.genres.map((item) => item.name).join(", ")}</p>
+                      <p>
+                        {data.genres.length > 0
+                          ? data.genres.map((item) => item.name).join(", ")
+                          : "-"}
+                      </p>
                     </div>
                   </Container>
                 </div>

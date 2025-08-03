@@ -22,10 +22,7 @@ export const MediaHeaderInfo = ({
       </div>
       {runtime > 0 && <Runtime runtime={runtime} />}
       {seasons > 0 && <NumberOfSeasons seasons={seasons} />}
-      <div>
-        <Calendar size={20} color="#9ca3af" />
-        <p>{new Date(releaseDate).getFullYear()}</p>
-      </div>
+      {releaseDate && <ReleaseDate releaseDate={releaseDate} />}
     </div>
   );
 };
@@ -46,6 +43,15 @@ const NumberOfSeasons = ({ seasons }: { seasons: number }) => {
       <p>
         {seasons} {seasons > 1 ? "Seasons" : "Season"}
       </p>
+    </div>
+  );
+};
+
+const ReleaseDate = ({ releaseDate }: { releaseDate: string }) => {
+  return (
+    <div>
+      <Calendar size={20} color="#9ca3af" />
+      <p>{new Date(releaseDate).getFullYear()}</p>
     </div>
   );
 };
