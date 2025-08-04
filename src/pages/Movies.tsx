@@ -52,7 +52,6 @@ export const Movies = () => {
     console.log("error");
   }
 
-  console.log(genres);
   return (
     <div className="movies">
       <MoviesFilters />

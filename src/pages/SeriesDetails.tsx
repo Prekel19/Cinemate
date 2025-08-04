@@ -38,7 +38,7 @@ export const SeriesDetails = () => {
   });
 
   if (isError || isCreditsError) {
-    return <div>Error: {error?.message || creditsError?.message}</div>;
+    return <div>{error?.message || creditsError?.message}</div>;
   }
 
   return (
