@@ -41,9 +41,6 @@ export const SeriesDetails = () => {
     return <div>Error: {error?.message || creditsError?.message}</div>;
   }
 
-  console.log(data);
-  console.log(credits);
-
   return (
     <>
       {isPending || isCreditsPending ? (
