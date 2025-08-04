@@ -9,6 +9,7 @@ import { MovieDetails } from "./pages/MoviesDetails";
 import { Watchlist } from "./pages/Watchlist";
 import { Movies } from "./pages/Movies";
 import { Series } from "./pages/Series";
+import { Search } from "./pages/Search";
 
 const queryClient = new QueryClient();
 
@@ -54,6 +55,10 @@ function App() {
         {
           path: "/watchlist",
           element: <Watchlist />,
+        },
+        {
+          path: "/search/:search",
+          element: <Search />,
         },
       ],
     },

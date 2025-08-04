@@ -21,7 +21,7 @@ export const MediaTile = ({
   mediaType,
   releaseDate,
 }: MediaTileProps) => {
-  const yearOfRelease = new Date(releaseDate).getFullYear();
+  const yearOfRelease = releaseDate ? new Date(releaseDate).getFullYear() : "";
   const media = mediaType === "movie" ? "movies" : "series";
 
   return (

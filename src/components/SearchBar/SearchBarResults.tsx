@@ -11,6 +11,7 @@ type SearchBarResultsProps = {
 type SearchBarResultProps = {
   searchResult: SearchResults;
   media: "movies" | "series";
+  releaseDate: string;
 };
 
 export const SearchBarResults = ({ searchResults }: SearchBarResultsProps) => {
@@ -33,7 +34,12 @@ export const SearchBarResults = ({ searchResults }: SearchBarResultsProps) => {
             Movies
           </h3>
           {movies.map((movie) => (
-            <SearchBarResult key={movie.id} searchResult={movie} media="movies" />
+            <SearchBarResult
+              key={movie.id}
+              searchResult={movie}
+              releaseDate={movie.release_date || ""}
+              media="movies"
+            />
           ))}
         </div>
       )}
@@ -44,7 +50,12 @@ export const SearchBarResults = ({ searchResults }: SearchBarResultsProps) => {
             Tv Shows
           </h3>
           {series.map((show) => (
-            <SearchBarResult key={show.id} searchResult={show} media="series" />
+            <SearchBarResult
+              key={show.id}
+              searchResult={show}
+              releaseDate={show.first_air_date || ""}
+              media="series"
+            />
           ))}
         </div>
       )}
@@ -52,10 +63,8 @@ export const SearchBarResults = ({ searchResults }: SearchBarResultsProps) => {
   );
 };
 
-const SearchBarResult = ({ searchResult, media }: SearchBarResultProps) => {
-  const yearOfRelease = new Date(
-    (searchResult.first_air_date || searchResult.release_date) ?? 0
-  ).getFullYear();
+const SearchBarResult = ({ searchResult, media, releaseDate }: SearchBarResultProps) => {
+  const yearOfRelease = releaseDate ? new Date(releaseDate).getFullYear() : "";
   const img = searchResult.poster_path
     ? `${baseImgUrl}${posterSizes.w92}/${searchResult.poster_path}`
     : undefined;
