@@ -1,0 +1,70 @@
+@use "@/styles/constants" as c;
+@use "@/styles/mixin" as m;
+
+.episodes {
+  &-list {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    justify-items: center;
+    gap: 1.25rem;
+    padding-top: 2.5rem;
+  }
+
+  &-item {
+    flex-direction: row;
+    gap: 0;
+    padding: 0;
+  }
+}
+
+.episode {
+  &-poster {
+    max-width: 300px;
+    aspect-ratio: 3/2;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+    flex: 1;
+    padding: 1rem;
+
+    &-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+  &-title {
+    @include m.title(1rem);
+    font-weight: 500;
+  }
+
+  &-runtime {
+    background: c.$bg-gray;
+    font-size: 0.75rem;
+    line-height: 110%;
+    padding: 0.4rem;
+    border-radius: 99px;
+  }
+
+  &-subtitle {
+    @include m.info();
+  }
+
+  &-overview {
+    @include m.text();
+  }
+
+  &-rating {
+    @include m.info();
+  }
+}

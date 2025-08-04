@@ -20,7 +20,7 @@ export const MovieDetails = () => {
   const { data, isPending, isError, error } = useQuery({
     queryKey: ["media-details", { id }],
     queryFn: () =>
-      getTmdbApi<Movie>(`/movie/${id}`, {
+      getTmdbApi<Movie>(`movie/${id}`, {
         language: "en-US",
       }),
   });
@@ -33,7 +33,7 @@ export const MovieDetails = () => {
   } = useQuery({
     queryKey: ["media-cast", { id }],
     queryFn: () =>
-      getTmdbApi<Credits>(`/movie/${id}/credits`, {
+      getTmdbApi<Credits>(`movie/${id}/credits`, {
         language: "en-US",
       }),
   });

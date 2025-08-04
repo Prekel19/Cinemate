@@ -10,6 +10,7 @@ import { Watchlist } from "./pages/Watchlist";
 import { Movies } from "./pages/Movies";
 import { Series } from "./pages/Series";
 import { Search } from "./pages/Search";
+import { Season } from "./pages/Season";
 
 const queryClient = new QueryClient();
 
@@ -48,6 +49,10 @@ function App() {
             {
               path: "/series/:id",
               element: <SeriesDetails />,
+            },
+            {
+              path: "/series/:id/season/:seasonNumber",
+              element: <Season />,
             },
           ],
         },

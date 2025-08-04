@@ -1,6 +1,7 @@
 import { Container } from "@/components/ui/Container/Container";
 import type { Seasons } from "@/models/types";
 import { baseImgUrl, posterSizes } from "@/models/data";
+import { Link, useParams } from "react-router";
 import { Star } from "lucide-react";
 import "./style.scss";
 
@@ -9,6 +10,8 @@ type SeasonListProps = {
 };
 
 export const SeasonList = ({ seasons }: SeasonListProps) => {
+  const { id } = useParams();
+
   if (seasons.length === 0) {
     return null;
   }
@@ -20,14 +23,20 @@ export const SeasonList = ({ seasons }: SeasonListProps) => {
         {seasons.map((season) => (
           <Container key={season.id} className="season-item">
             <div className="season-poster">
-              <img
-                src={`${baseImgUrl}${posterSizes.w342}${season.poster_path}`}
-                alt={`${season.name} poster`}
-              />
+              <Link to={`/series/${id}/season/${season.season_number}`}>
+                <img
+                  src={`${baseImgUrl}${posterSizes.w342}${season.poster_path}`}
+                  alt={`${season.name} poster`}
+                />
+              </Link>
             </div>
             <div className="season-body">
               <div className="season-body-header">
-                <p className="season-title">{season.name}</p>
+                <p className="season-title">
+                  <Link to={`/series/${id}/season/${season.season_number}`}>
+                    {season.name}
+                  </Link>
+                </p>
                 <p className="season-episodes">
                   {season.episode_count}
                   {season.episode_count > 1 ? " Episodes" : " Episode"}

@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import { AspectRatio } from "@radix-ui/react-aspect-ratio";
+import { AspectRatio } from "../ui/aspect-ratio";
 import { baseImgUrl, posterSizes } from "@/models/data";
 import { Star } from "lucide-react";
 import "./style.scss";

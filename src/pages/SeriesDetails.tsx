@@ -19,10 +19,11 @@ export const SeriesDetails = () => {
   const { data, isPending, isError, error } = useQuery({
     queryKey: ["media-details", { id }],
     queryFn: () =>
-      getTmdbApi<Series>(`/tv/${id}`, {
+      getTmdbApi<Series>(`tv/${id}`, {
         language: "en-US",
       }),
   });
+
   const {
     data: credits,
     isPending: isCreditsPending,
@@ -31,7 +32,7 @@ export const SeriesDetails = () => {
   } = useQuery({
     queryKey: ["media-cast", { id }],
     queryFn: () =>
-      getTmdbApi<Credits>(`/tv/${id}/credits`, {
+      getTmdbApi<Credits>(`tv/${id}/credits`, {
         language: "en-US",
       }),
   });

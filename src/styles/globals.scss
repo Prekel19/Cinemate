@@ -145,6 +145,23 @@ body {
   }
 }
 
+// SEASON
+.season {
+  background: #000;
+
+  .season-title {
+    @include m.title(2.5rem);
+    margin-top: -4rem;
+  }
+
+  .season-title,
+  .episodes-list {
+    max-width: 90%;
+    margin-right: auto;
+    margin-left: auto;
+  }
+}
+
 // WATCHLIST
 .watchlist {
   flex: 1;
@@ -166,7 +183,7 @@ body {
   padding: 1.5rem 0 0.5rem;
 }
 
-.app:has(.media-details) {
+.app:has(.media-details, .season) {
   .footer {
     background: #000;
   }
