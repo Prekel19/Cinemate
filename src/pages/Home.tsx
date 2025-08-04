@@ -60,8 +60,6 @@ export const Home = () => {
     return <div>Error</div>;
   }
 
-  console.log(data?.pages);
-
   return (
     <>
       {isTrendingPending ? (

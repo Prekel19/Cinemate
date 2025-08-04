@@ -53,7 +53,6 @@ export const Series = () => {
     console.log("error");
   }
 
-  console.log(data?.pages);
   return (
     <div className="series">
       <SeriesFilters />
