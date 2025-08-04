@@ -16,6 +16,7 @@ export const Home = () => {
     data: trending,
     isPending: isTrendingPending,
     isError: isTrendingError,
+    error: trendingError,
   } = useQuery({
     queryKey: ["trending"],
     queryFn: () =>
@@ -24,16 +25,23 @@ export const Home = () => {
       }),
   });
 
-  const { data, isPending, isError, fetchNextPage, isFetchingNextPage, hasNextPage } =
-    useInfiniteQuery({
-      queryKey: ["home-discover"],
-      queryFn: ({ pageParam = 1 }) =>
-        getTmdbPage<Trendings>("trending/all/week", pageParam, {
-          language: "en-US",
-        }),
-      initialPageParam: 1,
-      getNextPageParam: (lastPage) => lastPage.nextPage,
-    });
+  const {
+    data,
+    isPending,
+    isError,
+    error,
+    fetchNextPage,
+    isFetchingNextPage,
+    hasNextPage,
+  } = useInfiniteQuery({
+    queryKey: ["home-discover"],
+    queryFn: ({ pageParam = 1 }) =>
+      getTmdbPage<Trendings>("trending/all/week", pageParam, {
+        language: "en-US",
+      }),
+    initialPageParam: 1,
+    getNextPageParam: (lastPage) => lastPage.nextPage,
+  });
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -57,7 +65,7 @@ export const Home = () => {
   }, [fetchNextPage, hasNextPage]);
 
   if (isTrendingError || isError) {
-    return <div>Error</div>;
+    return <div className="fetch-error">{error?.message || trendingError?.message}</div>;
   }
 
   return (

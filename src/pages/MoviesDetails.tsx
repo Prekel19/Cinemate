@@ -39,7 +39,7 @@ export const MovieDetails = () => {
   });
 
   if (isError || isCreditsError) {
-    return <div>Error: {error?.message || creditsError?.message}</div>;
+    return <div className="fetch-error">{error?.message || creditsError?.message}</div>;
   }
 
   return (

@@ -10,7 +10,7 @@ export const Search = () => {
 
   const formatedSearch: string = search ? search?.split("-").join(" ") : "";
 
-  const { data, isPending } = useQuery({
+  const { data, isPending, isError, error } = useQuery({
     queryKey: ["searchbar", { search }],
     queryFn: () =>
       getTmdbApi<SearchResults>("search/multi", {
@@ -21,29 +21,32 @@ export const Search = () => {
     enabled: !!formatedSearch,
   });
 
-  const filteredSearch = data?.results.filter((item) => item.media_type !== "person");
+  if (isError) {
+    return <div className="fetch-error">{error?.message}</div>;
+  }
+
+  if (isPending) {
+    return <LoadingSpinner />;
+  }
+
+  const filteredSearch = data.results.filter((item) => item.media_type !== "person");
 
   return (
     <div className="search">
       <h3 className="search-title">Results for "{formatedSearch}"</h3>
-      {isPending ? (
-        <LoadingSpinner />
-      ) : (
-        <div className="search-content media-tiles-container">
-          {filteredSearch &&
-            filteredSearch.map((result) => (
-              <MediaTile
-                key={result.id}
-                id={result.id}
-                imgUrl={result.poster_path}
-                title={result.name || result.title || ""}
-                mediaType={result.media_type}
-                rating={result.vote_average}
-                releaseDate={result.first_air_date || result.release_date || ""}
-              />
-            ))}
-        </div>
-      )}
+      <div className="search-content media-tiles-container">
+        {filteredSearch.map((result) => (
+          <MediaTile
+            key={result.id}
+            id={result.id}
+            imgUrl={result.poster_path}
+            title={result.name || result.title || ""}
+            mediaType={result.media_type}
+            rating={result.vote_average}
+            releaseDate={result.first_air_date || result.release_date || ""}
+          />
+        ))}
+      </div>
     </div>
   );
 };

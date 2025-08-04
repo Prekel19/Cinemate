@@ -10,7 +10,7 @@ import { useParams } from "react-router";
 export const Season = () => {
   const { id, seasonNumber } = useParams();
 
-  const { data, isPending, isError } = useQuery({
+  const { data, isPending, isError, error } = useQuery({
     queryKey: ["media-details", { id }],
     queryFn: () =>
       getTmdbApi<Series>(`tv/${id}`, {
@@ -22,6 +22,7 @@ export const Season = () => {
     data: season,
     isPending: isSeasonPending,
     isError: isSeasonError,
+    error: seasonError,
   } = useQuery({
     queryKey: ["season", { id, seasonNumber }],
     queryFn: () =>
@@ -31,7 +32,7 @@ export const Season = () => {
   });
 
   if (isError || isSeasonError) {
-    return null;
+    return <div className="fetch-error">{error?.message || seasonError?.message}</div>;
   }
 
   return (

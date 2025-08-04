@@ -1,9 +1,9 @@
 import type { Episode } from "@/models/types";
 import { Container } from "../ui/Container/Container";
 import { baseImgUrl } from "@/models/data";
-import "./style.scss";
 import { getFormatedDate } from "@/utility/getFormatedDate";
 import { Star } from "lucide-react";
+import "./style.scss";
 
 type EpisodesListProps = {
   episodes: Episode[];

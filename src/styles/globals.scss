@@ -40,6 +40,15 @@ body {
   position: relative;
 }
 
+// FETCH ERROR
+.fetch-error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  font-size: 1.5rem;
+}
+
 // PAGE LOADER
 .page-loader {
   display: flex;

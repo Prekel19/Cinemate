@@ -38,7 +38,7 @@ export const SeriesDetails = () => {
   });
 
   if (isError || isCreditsError) {
-    return <div>{error?.message || creditsError?.message}</div>;
+    return <div className="fetch-error">{error?.message || creditsError?.message}</div>;
   }
 
   return (

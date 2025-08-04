@@ -13,19 +13,26 @@ export const Movies = () => {
   const { genres, year, sorting } = useMoviesFilterContext();
   const endOfPageRef = useRef<HTMLDivElement | null>(null);
 
-  const { data, isPending, isError, fetchNextPage, isFetchingNextPage, hasNextPage } =
-    useInfiniteQuery({
-      queryKey: ["movies-discover", { genres, year, sorting }],
-      queryFn: ({ pageParam = 1 }) =>
-        getTmdbPage<MovieDiscover>("discover/movie", pageParam, {
-          language: "en-US",
-          with_genres: genres,
-          primary_release_year: year,
-          sort_by: sorting,
-        }),
-      initialPageParam: 1,
-      getNextPageParam: (lastPage) => lastPage.nextPage,
-    });
+  const {
+    data,
+    isPending,
+    isError,
+    error,
+    fetchNextPage,
+    isFetchingNextPage,
+    hasNextPage,
+  } = useInfiniteQuery({
+    queryKey: ["movies-discover", { genres, year, sorting }],
+    queryFn: ({ pageParam = 1 }) =>
+      getTmdbPage<MovieDiscover>("discover/movie", pageParam, {
+        language: "en-US",
+        with_genres: genres,
+        primary_release_year: year,
+        sort_by: sorting,
+      }),
+    initialPageParam: 1,
+    getNextPageParam: (lastPage) => lastPage.nextPage,
+  });
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -49,7 +56,7 @@ export const Movies = () => {
   }, [fetchNextPage, hasNextPage]);
 
   if (isError) {
-    console.log("error");
+    return <div className="fetch-error">{error?.message}</div>;
   }
 
   return (

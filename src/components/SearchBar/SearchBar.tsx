@@ -62,7 +62,7 @@ export const SearchBar = () => {
   };
 
   if (isError) {
-    console.log(error);
+    return <div className="fetch-error">{error?.message}</div>;
   }
 
   return (

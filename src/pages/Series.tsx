@@ -14,19 +14,26 @@ export const Series = () => {
 
   const endOfPageRef = useRef<HTMLDivElement | null>(null);
 
-  const { data, isPending, isError, fetchNextPage, isFetchingNextPage, hasNextPage } =
-    useInfiniteQuery({
-      queryKey: ["series-discover", { genres, year, sorting }],
-      queryFn: ({ pageParam = 1 }) =>
-        getTmdbPage<SeriesDiscover>("discover/tv", pageParam, {
-          language: "en-US",
-          with_genres: genres,
-          first_air_date_year: year,
-          sort_by: sorting,
-        }),
-      initialPageParam: 1,
-      getNextPageParam: (lastPage) => lastPage.nextPage,
-    });
+  const {
+    data,
+    isPending,
+    isError,
+    error,
+    fetchNextPage,
+    isFetchingNextPage,
+    hasNextPage,
+  } = useInfiniteQuery({
+    queryKey: ["series-discover", { genres, year, sorting }],
+    queryFn: ({ pageParam = 1 }) =>
+      getTmdbPage<SeriesDiscover>("discover/tv", pageParam, {
+        language: "en-US",
+        with_genres: genres,
+        first_air_date_year: year,
+        sort_by: sorting,
+      }),
+    initialPageParam: 1,
+    getNextPageParam: (lastPage) => lastPage.nextPage,
+  });
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -50,7 +57,7 @@ export const Series = () => {
   }, [fetchNextPage, hasNextPage]);
 
   if (isError) {
-    console.log("error");
+    return <div className="fetch-error">{error?.message}</div>;
   }
 
   return (

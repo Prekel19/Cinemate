@@ -1,7 +1,7 @@
 import { Container } from "@/components/ui/Container/Container";
 import { getFormatedSum } from "@/utility/getFormatedSum";
-import "./style.scss";
 import { DollarSign } from "lucide-react";
+import "./style.scss";
 
 type BoxOfficeProps = {
   budget: number;
