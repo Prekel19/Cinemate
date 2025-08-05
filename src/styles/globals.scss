@@ -250,3 +250,50 @@ body {
     background: #000;
   }
 }
+
+// RWD
+@media screen and (max-width: 1024px) {
+  // MEDIA CONTAINER
+  .media-tiles-container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  // MOVIE & SERIES DETAILS
+  .media-details {
+    &-content-wrapper {
+      max-width: 90%;
+    }
+
+    &-content {
+      flex-direction: column;
+
+      &-left,
+      &-right {
+        max-width: unset;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 834px) {
+  html {
+    font-size: 16px;
+  }
+
+  // MEDIA CONTAINER
+  .media-tiles-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  html {
+    font-size: 15px;
+  }
+
+  // MEDIA CONTAINER
+  .media-tiles-container {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 1.5rem 2.5% 0;
+  }
+}

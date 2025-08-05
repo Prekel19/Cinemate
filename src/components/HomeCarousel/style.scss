@@ -137,3 +137,26 @@
     }
   }
 }
+
+@media screen and (max-width: 1024px) {
+  .home-carousel {
+    .slide-content {
+      padding: 0 5%;
+    }
+
+    .swiper-button-prev,
+    .swiper-button-next {
+      display: none;
+    }
+  }
+}
+
+@media screen and (max-width: 834px) {
+  .home-carousel {
+    .swiper-slide {
+      .AsyncImage-root {
+        height: 500px !important;
+      }
+    }
+  }
+}

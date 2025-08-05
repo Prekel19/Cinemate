@@ -16,7 +16,7 @@ export const BoxOffice = ({ budget, revenue }: BoxOfficeProps) => {
         <Container className="box-office_item">
           <div className="box-office_item-title">
             <DollarSign size={20} color="#22c55e" />
-            <p>Revenue</p>
+            <p>Budget</p>
           </div>
           <p className="box-office_item-content">
             {budget ? getFormatedSum(budget) : "-"}

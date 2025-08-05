@@ -186,3 +186,39 @@
     color: c.$font-dark-gray;
   }
 }
+
+@media screen and (max-width: 834px) {
+  .searchbar {
+    // SEARCHBAR CONTAINER
+    &-container {
+      width: 90%;
+    }
+
+    // SEARCHBAR INPUT
+    &-input {
+      &-field {
+        flex: 1;
+        padding-right: 0;
+      }
+
+      input {
+        max-width: calc(100% - 1.5rem);
+        width: unset;
+        flex: 1;
+      }
+    }
+  }
+}
+@media screen and (max-width: 480px) {
+  .searchbar {
+    // SEARCHBAR CONTAINER
+    &-container {
+      width: 95%;
+    }
+
+    // SEARCHBAR INPUT BUTTON
+    &-btn {
+      padding: 0.5rem 0.7rem;
+    }
+  }
+}

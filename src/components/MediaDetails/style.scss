@@ -88,3 +88,13 @@
     @include m.text();
   }
 }
+
+// RWD
+@media screen and (max-width: 834px) {
+  // BANNER
+  .media-details-banner {
+    img {
+      height: 450px;
+    }
+  }
+}
