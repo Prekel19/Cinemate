@@ -320,3 +320,8 @@ export type Season = {
   season_number: number;
   vote_average: number;
 };
+
+export type MenuItems = {
+  name: string;
+  path: string;
+};

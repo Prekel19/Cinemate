@@ -1,5 +1,14 @@
 import { Link, NavLink } from "react-router";
+import type { MenuItems } from "@/models/types";
 import "./style.scss";
+import { HamburgerMenu } from "@/components/HamburgerMenu/HamburgerMenu";
+
+const menu: MenuItems[] = [
+  { name: "All", path: "/" },
+  { name: "Movies", path: "/movies" },
+  { name: "TV Series", path: "/series" },
+  { name: "Watchlist", path: "/watchlist" },
+];
 
 export const Header = () => {
   return (
@@ -10,11 +19,11 @@ export const Header = () => {
         </Link>
       </h1>
       <div className="nav-menu">
-        <NavLink to="/">All</NavLink>
-        <NavLink to="/movies">Movies</NavLink>
-        <NavLink to="/series">TV Series</NavLink>
-        <NavLink to="/watchlist">Watchlist</NavLink>
+        {menu.map((item) => (
+          <NavLink to={item.path}>{item.name}</NavLink>
+        ))}
       </div>
+      <HamburgerMenu menu={menu} />
     </header>
   );
 };
