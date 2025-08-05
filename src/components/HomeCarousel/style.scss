@@ -18,7 +18,7 @@
 
     .AsyncImage-root {
       width: 100% !important;
-      height: 600px !important;
+      height: 700px !important;
       z-index: 1;
     }
   }
@@ -122,6 +122,17 @@
         &:hover {
           background: c.$bg-hover-red;
         }
+      }
+    }
+  }
+}
+
+// RWD
+@media screen and (max-width: 1600px) {
+  .home-carousel {
+    .swiper-slide {
+      .AsyncImage-root {
+        height: 600px !important;
       }
     }
   }
