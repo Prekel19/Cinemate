@@ -5,6 +5,10 @@ type MediaDetailsOverviewProps = {
 };
 
 export const MediaDetailsOverview = ({ overview }: MediaDetailsOverviewProps) => {
+  if (!overview) {
+    return null;
+  }
+
   return (
     <div className="media-details-overview">
       <h3 className="media-details-overview-title">Overview</h3>

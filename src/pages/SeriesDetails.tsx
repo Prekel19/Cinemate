@@ -85,19 +85,23 @@ export const SeriesDetails = () => {
                     </div>
                     <div className="media-details-info-section">
                       <span>Status</span>
-                      <p>{data.status}</p>
+                      <p>{data.status ?? "-"}</p>
                     </div>
                     <div className="media-details-info-section">
                       <span>Original title</span>
-                      <p>{data.original_name}</p>
+                      <p>{data.original_name ?? "-"}</p>
                     </div>
                     <div className="media-details-info-section">
                       <span>Genres</span>
-                      <p>{data.genres.map((item) => item.name).join(", ")}</p>
+                      <p>
+                        {data.genres.length > 0
+                          ? data.genres.map((item) => item.name).join(", ")
+                          : "-"}
+                      </p>
                     </div>
                     <div className="media-details-info-section">
                       <span>Total Episodes</span>
-                      <p>{data.number_of_episodes}</p>
+                      <p>{data.number_of_episodes ?? "-"}</p>
                     </div>
                   </Container>
                 </div>

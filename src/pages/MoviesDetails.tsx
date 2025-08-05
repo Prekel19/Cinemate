@@ -88,11 +88,11 @@ export const MovieDetails = () => {
                     </div>
                     <div className="media-details-info-section">
                       <span>Status</span>
-                      <p>{data.status}</p>
+                      <p>{data.status ?? "-"}</p>
                     </div>
                     <div className="media-details-info-section">
                       <span>Original title</span>
-                      <p>{data.original_title}</p>
+                      <p>{data.original_title ?? "-"}</p>
                     </div>
                     <div className="media-details-info-section">
                       <span>Genres</span>
