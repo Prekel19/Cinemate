@@ -19,8 +19,8 @@ export const Header = () => {
         </Link>
       </h1>
       <div className="nav-menu">
-        {menu.map((item) => (
-          <NavLink to={item.path}>{item.name}</NavLink>
+        {menu.map((item, index) => (
+          <NavLink key={index} to={item.path}>{item.name}</NavLink>
         ))}
       </div>
       <HamburgerMenu menu={menu} />

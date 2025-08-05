@@ -33,8 +33,10 @@ export const HamburgerMenu = ({ menu }: HamburgerMenuProps) => {
           </Button>
         </div>
         <div className="hamburger-menu-list">
-          {menu.map((item) => (
-            <Link to={item.path}>{item.name}</Link>
+          {menu.map((item, index) => (
+            <Link key={index} to={item.path}>
+              {item.name}
+            </Link>
           ))}
         </div>
       </div>
