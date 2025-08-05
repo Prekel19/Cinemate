@@ -4,6 +4,15 @@ import { Fade } from "react-awesome-reveal";
 
 export const Watchlist = () => {
   const { watchlist } = useWatchlist();
+
+  if (!watchlist.length) {
+    return (
+      <div className="watchlist">
+        <p className="text-center pt-6">You haven't added any movies or series yet</p>
+      </div>
+    );
+  }
+
   return (
     <div className="watchlist media-tiles-container">
       <Fade triggerOnce>
