@@ -42,9 +42,11 @@ export const SeasonList = ({ seasons }: SeasonListProps) => {
                   {season.episode_count > 1 ? " Episodes" : " Episode"}
                 </p>
               </div>
-              <span className="season-subtitle">
-                {new Date(season.air_date).getFullYear()}
-              </span>
+              {season.air_date && (
+                <span className="season-subtitle">
+                  {new Date(season.air_date).getFullYear()}
+                </span>
+              )}
               {season.overview && <p className="season-overview">{season.overview}</p>}
               <div className="season-rating">
                 <Star size={20} color="#eab308" />

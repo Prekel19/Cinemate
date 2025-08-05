@@ -13,7 +13,7 @@ export const EpisodesList = ({ episodes }: EpisodesListProps) => {
   return (
     <div className="episodes-list">
       {episodes.map((episode) => (
-        <Container className="episodes-item">
+        <Container key={episode.id} className="episodes-item">
           <div className="episode-poster">
             <img
               src={`${baseImgUrl}original${episode.still_path}`}
@@ -27,7 +27,11 @@ export const EpisodesList = ({ episodes }: EpisodesListProps) => {
                 <p className="episode-runtime">{episode.runtime} min</p>
               )}
             </div>
-            <span className="episode-subtitle">{getFormatedDate(episode.air_date)}</span>
+            {episode.air_date && (
+              <span className="episode-subtitle">
+                {getFormatedDate(episode.air_date)}
+              </span>
+            )}
             {episode.overview && <p className="episode-overview">{episode.overview}</p>}
             {episode.vote_average > 0 && <EpisodeRating rating={episode.vote_average} />}
           </div>
