@@ -11,6 +11,7 @@ import { Movies } from "./pages/Movies";
 import { Series } from "./pages/Series";
 import { Search } from "./pages/Search";
 import { Season } from "./pages/Season";
+import { NotFound } from "./pages/NotFound";
 
 const queryClient = new QueryClient();
 
@@ -19,6 +20,7 @@ function App() {
     {
       path: "/",
       element: <MainLayout />,
+      errorElement: <NotFound />,
       children: [
         {
           index: true,

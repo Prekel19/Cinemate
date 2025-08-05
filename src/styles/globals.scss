@@ -32,6 +32,59 @@ body {
   background-size: cover;
 }
 
+// NOT FOUND
+.notfound {
+  background: #000;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  text-align: center;
+
+  &-code {
+    font-size: 6.5rem;
+    font-weight: 700;
+    color: c.$font-red;
+    line-height: 0.8;
+    opacity: 0.8;
+  }
+
+  &-title {
+    @include m.title(2.5rem);
+    line-height: 1;
+  }
+
+  &-text {
+    @include m.text();
+  }
+
+  &-buttons {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  &-btn {
+    background: c.$bg-dark-gray;
+    font-weight: 400;
+    color: c.$font-white;
+    cursor: pointer;
+
+    &:hover {
+      background: c.$bg-gray;
+    }
+
+    &.red {
+      background: c.$bg-red;
+      &:hover {
+        background: c.$bg-hover-red;
+      }
+    }
+  }
+}
+
 // APP CONTAINER
 .app {
   min-height: 100vh;
