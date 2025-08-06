@@ -287,10 +287,6 @@ body {
 }
 
 @media screen and (max-width: 480px) {
-  html {
-    font-size: 15px;
-  }
-
   // MEDIA CONTAINER
   .media-tiles-container {
     grid-template-columns: repeat(2, 1fr);

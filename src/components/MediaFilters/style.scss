@@ -11,6 +11,7 @@
 
   &-trigger {
     background: c.$bg-dark-gray;
+    font-size: 0.95rem;
     color: c.$font-white;
     border-color: c.$border-gray;
     cursor: pointer;
@@ -20,7 +21,7 @@
     }
 
     &.year {
-      width: 155px;
+      width: 160px;
     }
 
     &.sorting {
@@ -37,6 +38,7 @@
   }
 
   &-item {
+    font-size: 0.95rem;
     color: c.$font-white;
     cursor: pointer;
 
@@ -50,6 +52,7 @@
 @media screen and (max-width: 768px) {
   .media-filters {
     flex-wrap: wrap;
+    font-size: 1.1rem;
 
     &-trigger {
       flex: 1;

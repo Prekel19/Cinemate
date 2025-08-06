@@ -160,3 +160,19 @@
     }
   }
 }
+
+@media screen and (max-width: 480px) {
+  .home-carousel {
+    .slide-content {
+      .trending {
+        &-title {
+          font-size: 2.5rem;
+        }
+
+        &-description {
+          font-size: 0.8rem;
+        }
+      }
+    }
+  }
+}
