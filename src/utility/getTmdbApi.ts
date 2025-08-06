@@ -9,10 +9,8 @@ export async function getTmdbApi<T>(
   const formatedUrl: string = url + endpoint;
 
   const res = await axios.get<T>(formatedUrl, {
-    headers: {
-      authorization: `Bearer ${import.meta.env.VITE_TMDB_API_KEY}`,
-    },
     params: {
+      api_key: import.meta.env.VITE_TMDB_API_KEY,
       ...(params ?? {}),
     },
   });

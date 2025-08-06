@@ -46,3 +46,22 @@
     }
   }
 }
+
+@media screen and (max-width: 768px) {
+  .media-filters {
+    flex-wrap: wrap;
+
+    &-trigger {
+      flex: 1;
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .media-filters {
+    &-trigger {
+      width: 100% !important;
+      flex: unset;
+    }
+  }
+}
