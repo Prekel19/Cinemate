@@ -84,3 +84,12 @@
     @include m.info();
   }
 }
+
+// RWD
+@media screen and (max-width: 480px) {
+  .season {
+    &-poster {
+      max-width: 120px;
+    }
+  }
+}

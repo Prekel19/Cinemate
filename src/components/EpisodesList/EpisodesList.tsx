@@ -3,6 +3,7 @@ import { Container } from "../ui/Container/Container";
 import { baseImgUrl } from "@/models/data";
 import { getFormatedDate } from "@/utility/getFormatedDate";
 import { Star } from "lucide-react";
+import ImageFallback from "@/assets/images/image-fallback.png";
 import "./style.scss";
 
 type EpisodesListProps = {
@@ -16,7 +17,11 @@ export const EpisodesList = ({ episodes }: EpisodesListProps) => {
         <Container key={episode.id} className="episodes-item">
           <div className="episode-poster">
             <img
-              src={`${baseImgUrl}original${episode.still_path}`}
+              src={
+                episode.still_path
+                  ? `${baseImgUrl}original${episode.still_path}`
+                  : ImageFallback
+              }
               alt={`${episode.name} poster`}
             />
           </div>

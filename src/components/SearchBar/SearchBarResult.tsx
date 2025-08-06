@@ -1,6 +1,7 @@
 import { baseImgUrl, posterSizes } from "@/models/data";
 import type { SearchResults } from "@/models/types";
 import { Link } from "react-router";
+import ImageFallback from "@/assets/images/image-fallback-small.png";
 
 type SearchBarResultProps = {
   searchResult: SearchResults;
@@ -16,7 +17,7 @@ export const SearchBarResult = ({
   const yearOfRelease = releaseDate ? new Date(releaseDate).getFullYear() : "";
   const img = searchResult.poster_path
     ? `${baseImgUrl}${posterSizes.w92}/${searchResult.poster_path}`
-    : undefined;
+    : ImageFallback;
 
   return (
     <div className="searchbar-result">

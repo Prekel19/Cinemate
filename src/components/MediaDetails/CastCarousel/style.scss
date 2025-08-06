@@ -27,6 +27,13 @@
     border-radius: 8px;
     overflow: hidden;
 
+    &-profile {
+      img {
+        width: 100%;
+        object-fit: cover;
+      }
+    }
+
     &_body {
       padding: 0.6rem;
     }
@@ -39,6 +46,15 @@
 
     &-character {
       @include m.info();
+    }
+  }
+}
+
+// RWD
+@media screen and (max-width: 480px) {
+  .cast {
+    &-tile {
+      flex: 0 0 130px;
     }
   }
 }

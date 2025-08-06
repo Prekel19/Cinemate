@@ -51,6 +51,7 @@
   &-runtime {
     background: c.$bg-gray;
     font-size: 0.75rem;
+    text-align: center;
     line-height: 110%;
     padding: 0.4rem;
     border-radius: 99px;
@@ -75,12 +76,21 @@
     &-poster {
       width: 250px;
       aspect-ratio: 4/3;
+    }
+  }
+}
 
-      img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
+@media screen and (max-width: 480px) {
+  .episodes {
+    &-item {
+      flex-direction: column;
+    }
+  }
+
+  .episode {
+    &-poster {
+      width: 100%;
+      aspect-ratio: 4/2;
     }
   }
 }

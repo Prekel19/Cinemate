@@ -3,6 +3,7 @@ import type { Seasons } from "@/models/types";
 import { baseImgUrl, posterSizes } from "@/models/data";
 import { Link, useParams } from "react-router";
 import { Star } from "lucide-react";
+import ImageFallback from "@/assets/images/image-fallback.png";
 import "./style.scss";
 
 type SeasonListProps = {
@@ -25,7 +26,11 @@ export const SeasonList = ({ seasons }: SeasonListProps) => {
             <div className="season-poster">
               <Link to={`/series/${id}/season/${season.season_number}`}>
                 <img
-                  src={`${baseImgUrl}${posterSizes.w342}${season.poster_path}`}
+                  src={
+                    season.poster_path
+                      ? `${baseImgUrl}${posterSizes.w342}${season.poster_path}`
+                      : ImageFallback
+                  }
                   alt={`${season.name} poster`}
                 />
               </Link>

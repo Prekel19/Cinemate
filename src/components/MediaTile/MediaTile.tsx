@@ -2,6 +2,7 @@ import { Link } from "react-router";
 import { AspectRatio } from "../ui/aspect-ratio";
 import { baseImgUrl, posterSizes } from "@/models/data";
 import { Star } from "lucide-react";
+import ImageFallback from "@/assets/images/image-fallback.png";
 import "./style.scss";
 
 type MediaTileProps = {
@@ -29,7 +30,7 @@ export const MediaTile = ({
       <Link to={`/${media}/${id}`}>
         <AspectRatio className="media-tile-poster" ratio={2 / 3}>
           <img
-            src={imgUrl && `${baseImgUrl}${posterSizes.w342}${imgUrl}`}
+            src={imgUrl ? `${baseImgUrl}${posterSizes.w342}${imgUrl}` : ImageFallback}
             alt={`${title} poster`}
           />
         </AspectRatio>
